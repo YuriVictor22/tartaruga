@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+
+# gerados durante o uso
+historico/
+workspace/
+projetos/
+dados_aprendidos.json
+
+# pesos baixados por preparar_semantica.py
+modelos/

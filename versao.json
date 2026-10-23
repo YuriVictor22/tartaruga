@@ -1,0 +1,15 @@
+{
+  "versao": "1.1.0-dev",
+  "distribuicao": "Tartaruga-completa-preview-2026-09-26",
+  "data": "2026-09-26",
+  "recursos": [
+    "sessoes independentes",
+    "backup e restauracao",
+    "configuracoes",
+    "diagnostico",
+    "projetos de landing page",
+    "feedback anonimizado",
+    "gestao do conhecimento aprendido",
+    "preview ao vivo de HTML/CSS/JS"
+  ]
+}

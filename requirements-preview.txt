@@ -1,0 +1,3 @@
+# Preview ao vivo de HTML/CSS/JS opcional; Chromium embutido via PyQt6.
+# Só é necessário para a aba de preview da interface.
+PyQt6-WebEngine>=6.6.0

@@ -1,0 +1,2 @@
+# Compreensão semântica opcional; execução local em CPU.
+sentence-transformers>=5,<6

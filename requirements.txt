@@ -1,0 +1,11 @@
+# Dependências para RODAR a Tartaruga.
+#
+# Os algoritmos de IA - TF-IDF, Naive Bayes, similaridade de cosseno - foram
+# implementados do zero com a biblioteca padrão do Python. Nada aqui participa
+# desses algoritmos. O encoder opcional usa requirements-semantic.txt.
+
+# Interface gráfica (janela nativa, sem navegador)
+PyQt6>=6.6.0
+
+# Busca na web, gratuita e sem chave de API
+ddgs>=9.0.0

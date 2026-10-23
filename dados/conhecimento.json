@@ -1,0 +1,993 @@
+[
+  {
+    "id": "laco-for",
+    "titulo": "Laço for",
+    "perguntas": [
+      "como faço um laço for em python",
+      "como usar o for",
+      "como repetir algo várias vezes",
+      "como percorrer uma lista",
+      "para que serve o for"
+    ],
+    "resposta": "O `for` repete um bloco de código para cada item de uma sequência (lista, texto, range...). Ele para sozinho quando os itens acabam, por isso é a escolha natural quando você sabe quantas repetições quer.",
+    "codigo": "# percorrendo um range de números\nfor i in range(5):\n    print(i)          # 0, 1, 2, 3, 4\n\n# percorrendo uma lista\nfrutas = [\"maçã\", \"uva\", \"pera\"]\nfor fruta in frutas:\n    print(fruta)"
+  },
+  {
+    "id": "laco-while",
+    "titulo": "Laço while",
+    "perguntas": [
+      "como funciona o while",
+      "como usar o laço while",
+      "qual a diferença entre for e while",
+      "como repetir enquanto uma condição for verdadeira"
+    ],
+    "resposta": "O `while` repete enquanto a condição for verdadeira. Use quando você NÃO sabe de antemão quantas repetições serão necessárias. Cuidado: se a condição nunca virar falsa, o programa trava num laço infinito.",
+    "codigo": "contador = 0\nwhile contador < 3:\n    print(contador)\n    contador += 1     # sem esta linha, o laço nunca termina\n\n# for: você sabe quantas vezes\n# while: você repete até algo acontecer"
+  },
+  {
+    "id": "lista",
+    "titulo": "Listas",
+    "perguntas": [
+      "o que é uma lista",
+      "como criar uma lista",
+      "como funcionam listas em python",
+      "para que serve uma lista"
+    ],
+    "resposta": "Lista é uma coleção ordenada e mutável: guarda vários valores numa variável só, mantém a ordem e permite alterar depois de criada. Os índices começam em 0.",
+    "codigo": "numeros = [10, 20, 30]\n\nprint(numeros[0])     # 10  (primeiro item)\nprint(numeros[-1])    # 30  (último item)\n\nnumeros.append(40)    # adiciona no final\nnumeros[0] = 99       # altera um item\nprint(len(numeros))   # 4  (quantidade de itens)"
+  },
+  {
+    "id": "lista-vs-tupla",
+    "titulo": "Lista x Tupla",
+    "perguntas": [
+      "qual a diferença entre lista e tupla",
+      "o que é uma tupla",
+      "quando usar tupla no lugar de lista"
+    ],
+    "resposta": "A diferença principal é que a lista pode ser alterada e a tupla não. Use tupla para dados que não devem mudar (uma coordenada, uma data) — além de proteger contra alteração acidental, ela é um pouco mais rápida.",
+    "codigo": "lista = [1, 2, 3]      # colchetes - mutável\ntupla = (1, 2, 3)      # parênteses - imutável\n\nlista[0] = 99          # funciona\n# tupla[0] = 99        # TypeError: não dá para alterar\n\nx, y = (10, 20)        # tupla é ótima para desempacotar valores"
+  },
+  {
+    "id": "dicionario",
+    "titulo": "Dicionários",
+    "perguntas": [
+      "o que é um dicionário",
+      "como usar dicionário em python",
+      "como guardar pares de chave e valor",
+      "me ensina a usar dicionário"
+    ],
+    "resposta": "Dicionário guarda pares chave→valor. Em vez de acessar por posição (como na lista), você acessa por um nome. A busca é praticamente instantânea, mesmo com muitos itens.",
+    "codigo": "aluno = {\"nome\": \"Ana\", \"nota\": 8.5}\n\nprint(aluno[\"nome\"])          # Ana\nprint(aluno.get(\"idade\"))     # None - não quebra se faltar\nprint(aluno.get(\"idade\", 0))  # 0   - valor padrão\n\naluno[\"curso\"] = \"ADS\"        # adiciona\n\nfor chave, valor in aluno.items():\n    print(chave, \"->\", valor)"
+  },
+  {
+    "id": "funcao",
+    "titulo": "Funções",
+    "perguntas": [
+      "como criar uma função",
+      "o que é uma função",
+      "como declarar função em python",
+      "como passar parâmetros para uma função"
+    ],
+    "resposta": "Função é um bloco de código com nome, que você escreve uma vez e reutiliza. Recebe dados pelos parâmetros e devolve um resultado com `return`. É a principal ferramenta contra código repetido.",
+    "codigo": "def somar(a, b):\n    return a + b\n\nresultado = somar(2, 3)   # 5\n\n# parâmetro com valor padrão\ndef saudar(nome, saudacao=\"Olá\"):\n    return f\"{saudacao}, {nome}!\"\n\nprint(saudar(\"Ana\"))                  # Olá, Ana!\nprint(saudar(\"Ana\", \"Bom dia\"))       # Bom dia, Ana!"
+  },
+  {
+    "id": "return",
+    "titulo": "Comando return",
+    "perguntas": [
+      "para que serve o return",
+      "qual a diferença entre return e print",
+      "o que o return faz"
+    ],
+    "resposta": "`return` devolve um valor para quem chamou a função e encerra a execução dela ali. Não confunda com `print`: o print só mostra na tela, enquanto o return entrega o valor para ser usado. Função sem return devolve `None`.",
+    "codigo": "def dobro_com_return(x):\n    return x * 2\n\ndef dobro_com_print(x):\n    print(x * 2)\n\na = dobro_com_return(5)   # a = 10, dá para usar\nb = dobro_com_print(5)    # mostra 10, mas b = None\n\nprint(a + 1)   # 11\n# print(b + 1) # TypeError - b é None"
+  },
+  {
+    "id": "if-else",
+    "titulo": "Condicionais if / elif / else",
+    "perguntas": [
+      "como usar o if else",
+      "como fazer uma condição",
+      "o que é elif",
+      "como tomar decisões no código"
+    ],
+    "resposta": "O `if` executa um bloco só quando a condição é verdadeira. `elif` testa outra condição se a anterior falhou, e `else` cobre todos os casos restantes. Só o PRIMEIRO bloco verdadeiro roda.",
+    "codigo": "nota = 7.5\n\nif nota >= 7:\n    print(\"Aprovado\")\nelif nota >= 5:\n    print(\"Recuperação\")\nelse:\n    print(\"Reprovado\")\n\n# operadores de comparação\n# ==  igual      !=  diferente\n# >   maior      <   menor\n# >=  maior ou igual   <=  menor ou igual\n# and / or / not para combinar condições"
+  },
+  {
+    "id": "igual-igual",
+    "titulo": "Diferença entre = e ==",
+    "perguntas": [
+      "qual a diferença entre == e =",
+      "quando usar dois iguais",
+      "por que meu if com = dá erro"
+    ],
+    "resposta": "`=` ATRIBUI um valor a uma variável. `==` COMPARA dois valores e devolve True ou False. Trocar um pelo outro dentro de um `if` gera erro de sintaxe — é um dos erros mais comuns de quem está começando.",
+    "codigo": "x = 5        # atribuição: x passa a valer 5\nx == 5       # comparação: devolve True\n\nif x == 5:   # correto\n    print(\"x vale cinco\")\n\n# if x = 5:  # SyntaxError"
+  },
+  {
+    "id": "try-except",
+    "titulo": "Tratamento de erros (try / except)",
+    "perguntas": [
+      "como tratar exceções",
+      "o que é try except",
+      "como evitar que o programa quebre com erro",
+      "como capturar um erro em python"
+    ],
+    "resposta": "O `try/except` permite reagir a um erro em vez de deixar o programa morrer. Coloque no `try` o código que pode falhar e no `except` o que fazer quando falhar. Prefira capturar o erro específico em vez de um `except` genérico — assim você não esconde bugs inesperados.",
+    "codigo": "try:\n    idade = int(input(\"Digite sua idade: \"))\n    print(100 / idade)\nexcept ValueError:\n    print(\"Isso não é um número válido.\")\nexcept ZeroDivisionError:\n    print(\"A idade não pode ser zero.\")\nelse:\n    print(\"Deu tudo certo!\")   # roda se NÃO houve erro\nfinally:\n    print(\"Sempre executo.\")   # roda de qualquer jeito"
+  },
+  {
+    "id": "classe",
+    "titulo": "Classes e objetos",
+    "perguntas": [
+      "o que é uma classe",
+      "como criar uma classe em python",
+      "o que é orientação a objetos",
+      "o que é um objeto"
+    ],
+    "resposta": "Classe é o molde; objeto é o que sai do molde. A classe define quais dados (atributos) e quais ações (métodos) algo tem, e você cria quantos objetos quiser a partir dela. O `__init__` é o construtor, chamado automaticamente na criação.",
+    "codigo": "class Aluno:\n    def __init__(self, nome, nota):\n        self.nome = nome      # atributo\n        self.nota = nota\n\n    def aprovado(self):       # método\n        return self.nota >= 7\n\nana = Aluno(\"Ana\", 8.5)       # objeto (instância)\nprint(ana.nome)               # Ana\nprint(ana.aprovado())         # True"
+  },
+  {
+    "id": "self",
+    "titulo": "O parâmetro self",
+    "perguntas": [
+      "o que significa self",
+      "para que serve o self",
+      "por que todo método tem self"
+    ],
+    "resposta": "`self` é a referência ao próprio objeto que está sendo usado. É por meio dele que um método acessa os atributos daquele objeto específico. O Python passa o `self` automaticamente — você declara no método, mas não passa na chamada.",
+    "codigo": "class Contador:\n    def __init__(self):\n        self.valor = 0        # self.valor pertence a ESTE objeto\n\n    def incrementar(self):\n        self.valor += 1\n\na = Contador()\nb = Contador()\n\na.incrementar()               # o Python envia 'a' como self\nprint(a.valor)                # 1\nprint(b.valor)                # 0 - objetos independentes"
+  },
+  {
+    "id": "heranca",
+    "titulo": "Herança",
+    "perguntas": [
+      "o que é herança em orientação a objetos",
+      "como usar herança em python",
+      "como uma classe herda de outra",
+      "para que serve o super"
+    ],
+    "resposta": "Herança permite que uma classe reaproveite o que outra já tem, acrescentando ou trocando comportamentos. A classe filha herda atributos e métodos da classe mãe. `super()` chama a versão da classe mãe.",
+    "codigo": "class Animal:\n    def __init__(self, nome):\n        self.nome = nome\n\n    def falar(self):\n        return \"...\"\n\nclass Cachorro(Animal):        # Cachorro herda de Animal\n    def falar(self):           # sobrescreve o método\n        return \"Au au!\"\n\nrex = Cachorro(\"Rex\")\nprint(rex.nome)                # Rex - veio de Animal\nprint(rex.falar())             # Au au!"
+  },
+  {
+    "id": "recursividade",
+    "titulo": "Recursividade",
+    "perguntas": [
+      "o que é recursividade",
+      "como fazer uma função recursiva",
+      "o que é caso base na recursão"
+    ],
+    "resposta": "Recursividade é uma função que chama a si mesma para resolver uma versão menor do problema. Toda função recursiva precisa de um CASO BASE — a condição que encerra as chamadas. Sem ele, a recursão vai até estourar a memória.",
+    "codigo": "def fatorial(n):\n    if n <= 1:          # caso base: para aqui\n        return 1\n    return n * fatorial(n - 1)   # caso recursivo\n\nprint(fatorial(5))      # 120\n\n# fatorial(5) = 5 * fatorial(4)\n#             = 5 * 4 * fatorial(3)\n#             = 5 * 4 * 3 * 2 * 1"
+  },
+  {
+    "id": "range",
+    "titulo": "Função range",
+    "perguntas": [
+      "como funciona o range",
+      "para que serve o range",
+      "como gerar uma sequência de números"
+    ],
+    "resposta": "`range` gera uma sequência de números, muito usada com `for`. Atenção ao detalhe mais confuso: o número final NÃO entra na sequência.",
+    "codigo": "range(5)         # 0, 1, 2, 3, 4      (o 5 fica de fora)\nrange(2, 6)      # 2, 3, 4, 5\nrange(0, 10, 2)  # 0, 2, 4, 6, 8      (de 2 em 2)\nrange(5, 0, -1)  # 5, 4, 3, 2, 1      (decrescente)\n\nfor i in range(3):\n    print(i)\n\nlista = list(range(5))   # [0, 1, 2, 3, 4]"
+  },
+  {
+    "id": "ordenar-lista",
+    "titulo": "Ordenar listas",
+    "perguntas": [
+      "como ordenar uma lista",
+      "como usar o sort",
+      "qual a diferença entre sort e sorted",
+      "como ordenar em ordem decrescente"
+    ],
+    "resposta": "`lista.sort()` ordena a própria lista e devolve None. `sorted(lista)` devolve uma lista nova e deixa a original intacta. Use `reverse=True` para decrescente e `key=` para escolher o critério.",
+    "codigo": "numeros = [3, 1, 2]\n\nnumeros.sort()                  # altera a lista: [1, 2, 3]\nnovos = sorted(numeros, reverse=True)   # nova lista: [3, 2, 1]\n\n# ordenando por um critério\nalunos = [(\"Ana\", 8), (\"Bia\", 6), (\"Caio\", 9)]\nalunos.sort(key=lambda item: item[1])   # ordena pela nota\nprint(alunos)   # [('Bia', 6), ('Ana', 8), ('Caio', 9)]"
+  },
+  {
+    "id": "append",
+    "titulo": "Adicionar itens numa lista",
+    "perguntas": [
+      "como funciona o append",
+      "como adicionar item na lista",
+      "qual a diferença entre append e extend",
+      "como inserir numa posição específica"
+    ],
+    "resposta": "`append` adiciona UM item no final. `extend` adiciona todos os itens de outra sequência. `insert` coloca numa posição específica. A confusão clássica: usar append com uma lista cria uma lista dentro da lista.",
+    "codigo": "lista = [1, 2]\n\nlista.append(3)        # [1, 2, 3]\nlista.append([4, 5])   # [1, 2, 3, [4, 5]]  <- lista aninhada!\n\noutra = [1, 2]\noutra.extend([4, 5])   # [1, 2, 4, 5]      <- itens soltos\n\noutra.insert(0, 99)    # [99, 1, 2, 4, 5]\noutra.remove(99)       # remove pelo valor\nultimo = outra.pop()   # remove e devolve o último"
+  },
+  {
+    "id": "list-comprehension",
+    "titulo": "List comprehension",
+    "perguntas": [
+      "o que é list comprehension",
+      "como criar lista em uma linha",
+      "como filtrar uma lista de forma compacta"
+    ],
+    "resposta": "É uma forma compacta de criar uma lista a partir de outra, substituindo um `for` com `append`. Muito usada em Python — mas se ficar difícil de ler, prefira o for tradicional.",
+    "codigo": "# forma tradicional\nquadrados = []\nfor n in range(5):\n    quadrados.append(n ** 2)\n\n# list comprehension - mesma coisa\nquadrados = [n ** 2 for n in range(5)]   # [0, 1, 4, 9, 16]\n\n# com filtro\npares = [n for n in range(10) if n % 2 == 0]   # [0, 2, 4, 6, 8]\n\n# também funciona com dicionário\nmapa = {n: n ** 2 for n in range(3)}   # {0: 0, 1: 1, 2: 4}"
+  },
+  {
+    "id": "len",
+    "titulo": "Função len",
+    "perguntas": [
+      "para que serve o len",
+      "como contar itens de uma lista",
+      "como saber o tamanho de um texto"
+    ],
+    "resposta": "`len()` devolve a quantidade de itens de uma sequência: caracteres num texto, elementos numa lista, chaves num dicionário. Lembre que o último índice válido é sempre `len(x) - 1`.",
+    "codigo": "print(len(\"Python\"))          # 6\nprint(len([1, 2, 3]))         # 3\nprint(len({\"a\": 1, \"b\": 2}))  # 2\n\nlista = [10, 20, 30]\nprint(lista[len(lista) - 1])  # 30 - último item\nprint(lista[-1])              # 30 - forma mais simples"
+  },
+  {
+    "id": "somar-lista",
+    "titulo": "Somar itens de uma lista",
+    "perguntas": [
+      "como somar os itens de uma lista",
+      "como calcular a média de uma lista",
+      "como usar o sum"
+    ],
+    "resposta": "`sum()` soma todos os itens numéricos. Combinado com `len()`, calcula a média. Cuidado com lista vazia: divisão por zero.",
+    "codigo": "notas = [8, 7, 9, 6]\n\ntotal = sum(notas)            # 30\nmedia = total / len(notas)    # 7.5\n\nprint(f\"Média: {media:.2f}\")  # Média: 7.50\n\nprint(max(notas))             # 9\nprint(min(notas))             # 6\n\n# evitando divisão por zero\nmedia = sum(notas) / len(notas) if notas else 0"
+  },
+  {
+    "id": "converter-tipos",
+    "titulo": "Converter tipos",
+    "perguntas": [
+      "como converter texto em número",
+      "como transformar string em int",
+      "como usar int e str",
+      "por que input sempre vem como texto"
+    ],
+    "resposta": "`input()` SEMPRE devolve texto, mesmo quando você digita números. Para calcular, converta com `int()` ou `float()`. Se o texto não representar um número, o Python levanta `ValueError`.",
+    "codigo": "texto = \"42\"\nnumero = int(texto)        # 42 (inteiro)\ndecimal = float(\"3.14\")    # 3.14\nde_volta = str(42)         # \"42\"\n\nidade = int(input(\"Idade: \"))   # converte a entrada\n\n# conversão segura\ntry:\n    valor = int(\"abc\")\nexcept ValueError:\n    print(\"Não é um número\")"
+  },
+  {
+    "id": "none",
+    "titulo": "O valor None",
+    "perguntas": [
+      "o que é None",
+      "para que serve None em python",
+      "como testar se algo é None"
+    ],
+    "resposta": "`None` representa a ausência de valor — diferente de 0, de string vazia ou de False. É o que uma função devolve quando não tem `return`. Compare sempre com `is None`, nunca com `== None`.",
+    "codigo": "def sem_retorno():\n    pass\n\nx = sem_retorno()\nprint(x)              # None\n\nif x is None:         # forma correta\n    print(\"sem valor\")\n\n# None, 0, \"\" e [] são todos 'falsos' em condições,\n# mas significam coisas diferentes:\nvalor = None          # não existe\nvalor = 0             # existe e vale zero"
+  },
+  {
+    "id": "ler-arquivo",
+    "titulo": "Ler arquivos",
+    "perguntas": [
+      "como ler um arquivo em python",
+      "como abrir um arquivo",
+      "como ler linha por linha",
+      "para que serve o with open"
+    ],
+    "resposta": "Use `with open(...)`: ele fecha o arquivo automaticamente, mesmo se der erro no meio. Sempre informe `encoding=\"utf-8\"` para que acentos funcionem corretamente.",
+    "codigo": "# lendo tudo de uma vez\nwith open(\"dados.txt\", encoding=\"utf-8\") as arquivo:\n    conteudo = arquivo.read()\n\n# lendo linha por linha (melhor para arquivos grandes)\nwith open(\"dados.txt\", encoding=\"utf-8\") as arquivo:\n    for linha in arquivo:\n        print(linha.strip())   # strip remove o \\n do final\n\n# tratando arquivo inexistente\ntry:\n    with open(\"nao_existe.txt\") as f:\n        print(f.read())\nexcept FileNotFoundError:\n    print(\"Arquivo não encontrado\")"
+  },
+  {
+    "id": "escrever-arquivo",
+    "titulo": "Escrever arquivos",
+    "perguntas": [
+      "como escrever em um arquivo",
+      "como salvar dados em arquivo",
+      "qual a diferença entre modo w e a"
+    ],
+    "resposta": "O modo `\"w\"` APAGA o conteúdo anterior e escreve do zero. O modo `\"a\"` acrescenta ao final, preservando o que já existia. Escolher errado é uma forma fácil de perder dados.",
+    "codigo": "# w = write: sobrescreve tudo\nwith open(\"saida.txt\", \"w\", encoding=\"utf-8\") as arquivo:\n    arquivo.write(\"primeira linha\\n\")\n    arquivo.write(\"segunda linha\\n\")\n\n# a = append: acrescenta no final\nwith open(\"saida.txt\", \"a\", encoding=\"utf-8\") as arquivo:\n    arquivo.write(\"terceira linha\\n\")\n\n# escrevendo várias linhas de uma vez\nlinhas = [\"um\\n\", \"dois\\n\"]\nwith open(\"saida.txt\", \"w\", encoding=\"utf-8\") as arquivo:\n    arquivo.writelines(linhas)"
+  },
+  {
+    "id": "import",
+    "titulo": "Importar módulos",
+    "perguntas": [
+      "como importar um módulo",
+      "o que é uma biblioteca",
+      "como usar o import",
+      "como instalar uma biblioteca"
+    ],
+    "resposta": "`import` traz código pronto de outro arquivo ou biblioteca. Bibliotecas da linguagem já vêm instaladas; as de terceiros são instaladas com `pip install`. Evite `from modulo import *`, que polui o espaço de nomes.",
+    "codigo": "import math                   # módulo inteiro\nprint(math.sqrt(16))          # 4.0\n\nfrom math import sqrt, pi     # só o que você precisa\nprint(sqrt(16))\n\nimport math as m              # com apelido\nprint(m.pi)\n\n# instalar biblioteca externa (no terminal, não no código):\n# pip install requests"
+  },
+  {
+    "id": "fstring",
+    "titulo": "Formatar texto com f-string",
+    "perguntas": [
+      "como juntar texto e variável",
+      "o que é f-string",
+      "como formatar número com duas casas decimais",
+      "como interpolar valores numa string"
+    ],
+    "resposta": "F-string é a forma moderna de montar textos com variáveis: coloque `f` antes das aspas e as variáveis entre chaves. É mais legível que concatenar com `+` e evita erros de conversão de tipo.",
+    "codigo": "nome = \"Ana\"\nnota = 8.4567\n\nprint(f\"{nome} tirou {nota}\")          # Ana tirou 8.4567\nprint(f\"{nome} tirou {nota:.2f}\")      # Ana tirou 8.46\n\n# também aceita expressões\nprint(f\"Dobro: {nota * 2:.1f}\")        # Dobro: 16.9\n\n# alinhamento (útil para tabelas)\nprint(f\"{nome:<10}|{nota:>8.2f}\")      # Ana       |    8.46"
+  },
+  {
+    "id": "fatiamento",
+    "titulo": "Fatiamento (slicing)",
+    "perguntas": [
+      "como pegar parte de uma lista",
+      "o que é slicing",
+      "como inverter uma lista ou string",
+      "como pegar os primeiros itens"
+    ],
+    "resposta": "O fatiamento usa `[inicio:fim:passo]` e devolve um pedaço novo, sem alterar o original. Como no `range`, o índice final não entra. Passo negativo inverte a sequência.",
+    "codigo": "lista = [0, 1, 2, 3, 4, 5]\n\nprint(lista[1:4])     # [1, 2, 3]   (do 1 até antes do 4)\nprint(lista[:3])      # [0, 1, 2]   (do começo)\nprint(lista[3:])      # [3, 4, 5]   (até o fim)\nprint(lista[::2])     # [0, 2, 4]   (de 2 em 2)\nprint(lista[::-1])    # [5, 4, 3, 2, 1, 0]  (invertido)\n\ntexto = \"Python\"\nprint(texto[::-1])    # nohtyP"
+  },
+  {
+    "id": "enumerate-zip",
+    "titulo": "enumerate e zip",
+    "perguntas": [
+      "como pegar o índice no for",
+      "o que é enumerate",
+      "como percorrer duas listas ao mesmo tempo",
+      "o que é zip"
+    ],
+    "resposta": "`enumerate` entrega índice e valor juntos, dispensando o contador manual. `zip` percorre duas ou mais sequências em paralelo, parando na mais curta.",
+    "codigo": "frutas = [\"maçã\", \"uva\", \"pera\"]\n\nfor indice, fruta in enumerate(frutas):\n    print(indice, fruta)      # 0 maçã / 1 uva / 2 pera\n\nfor indice, fruta in enumerate(frutas, start=1):\n    print(indice, fruta)      # começa em 1\n\nnomes = [\"Ana\", \"Bia\"]\nnotas = [8, 9]\nfor nome, nota in zip(nomes, notas):\n    print(f\"{nome}: {nota}\")"
+  },
+  {
+    "id": "metodos-string",
+    "titulo": "Métodos de texto",
+    "perguntas": [
+      "como manipular string em python",
+      "como deixar texto em maiúsculo",
+      "como remover espaços de um texto",
+      "como separar um texto em palavras"
+    ],
+    "resposta": "Textos em Python são imutáveis: os métodos sempre devolvem um NOVO texto, sem alterar o original. Por isso é preciso guardar o resultado numa variável.",
+    "codigo": "texto = \"  Olá Mundo  \"\n\nprint(texto.strip())        # \"Olá Mundo\" - tira espaços das pontas\nprint(texto.upper())        # \"  OLÁ MUNDO  \"\nprint(texto.lower())        # \"  olá mundo  \"\nprint(texto.replace(\"Olá\", \"Oi\"))\n\nfrase = \"um,dois,tres\"\nprint(frase.split(\",\"))     # ['um', 'dois', 'tres']\nprint(\"-\".join([\"a\", \"b\"])) # \"a-b\"\n\nprint(\"py\" in \"python\")     # True - verifica se contém"
+  },
+  {
+    "id": "comentario",
+    "titulo": "Comentários",
+    "perguntas": [
+      "como faço um comentário no código",
+      "como comentar várias linhas",
+      "o que é docstring"
+    ],
+    "resposta": "Use `#` para comentar uma linha. Para documentar uma função ou classe, use docstring — texto entre aspas triplas logo abaixo da definição, que aparece no `help()`.",
+    "codigo": "# isto é um comentário de uma linha\n\nx = 5  # também pode vir depois do código\n\ndef somar(a, b):\n    \"\"\"Soma dois números e devolve o resultado.\n\n    Esta é uma docstring: documenta a função.\n    \"\"\"\n    return a + b\n\nhelp(somar)   # mostra a docstring"
+  },
+  {
+    "id": "variavel",
+    "titulo": "Variáveis",
+    "perguntas": [
+      "o que é uma variável",
+      "como criar uma variável",
+      "quais os tipos de dados em python"
+    ],
+    "resposta": "Variável é um nome que aponta para um valor. Em Python você não declara o tipo — ele é inferido do valor e pode mudar ao longo do programa. Use nomes descritivos em minúsculas com underscore.",
+    "codigo": "nome = \"Ana\"          # str   - texto\nidade = 20            # int   - inteiro\naltura = 1.65         # float - decimal\nativo = True          # bool  - verdadeiro/falso\nnotas = [8, 9]        # list  - lista\ndados = {\"a\": 1}      # dict  - dicionário\nvazio = None          # NoneType\n\nprint(type(idade))    # <class 'int'>\n\n# nomes: minúsculas, com underscore\nmedia_final = 7.5     # bom\n# MediaFinal = 7.5    # evite (isso é padrão de classe)"
+  },
+  {
+    "id": "complexidade",
+    "titulo": "Complexidade de algoritmos",
+    "perguntas": [
+      "o que é complexidade de algoritmo",
+      "o que é notação big O",
+      "como saber se meu código é eficiente"
+    ],
+    "resposta": "Complexidade descreve como o tempo de execução cresce conforme a entrada aumenta. A notação Big O ignora constantes e foca no comportamento em larga escala — o que importa quando os dados crescem.",
+    "codigo": "# O(1) - constante: não depende do tamanho\nprimeiro = lista[0]\n\n# O(n) - linear: percorre tudo uma vez\nfor item in lista:\n    print(item)\n\n# O(n²) - quadrático: laço dentro de laço\nfor a in lista:\n    for b in lista:\n        print(a, b)\n\n# Dica prática: buscar em lista é O(n),\n# buscar em dicionário ou set é O(1).\n# Com muitos dados, isso faz enorme diferença."
+  },
+  {
+    "id": "laco-aninhado",
+    "titulo": "Laços aninhados",
+    "perguntas": [
+      "me explica o que é um laço aninhado",
+      "como fazer for dentro de for",
+      "como percorrer uma matriz"
+    ],
+    "resposta": "Laço aninhado é um laço dentro de outro. Para cada volta do externo, o interno roda por completo — por isso o total de repetições é a multiplicação dos dois. É como se percorre matrizes.",
+    "codigo": "# tabuada\nfor i in range(1, 4):\n    for j in range(1, 4):\n        print(f\"{i} x {j} = {i * j}\")\n    print(\"---\")\n\n# percorrendo uma matriz\nmatriz = [[1, 2], [3, 4]]\nfor linha in matriz:\n    for valor in linha:\n        print(valor, end=\" \")\n    print()\n\n# atenção: 3 x 3 = 9 repetições. Cresce rápido!"
+  },
+  {
+    "id": "set",
+    "titulo": "Conjuntos (set)",
+    "perguntas": [
+      "o que é um set",
+      "como remover itens duplicados de uma lista",
+      "o que é conjunto em python"
+    ],
+    "resposta": "`set` é uma coleção sem ordem e sem repetições. O uso mais comum é eliminar duplicatas. Também oferece operações de conjunto: união, interseção e diferença.",
+    "codigo": "numeros = [1, 2, 2, 3, 3, 3]\nunicos = set(numeros)         # {1, 2, 3}\nsem_repetir = list(unicos)    # de volta para lista\n\na = {1, 2, 3}\nb = {2, 3, 4}\n\nprint(a | b)   # {1, 2, 3, 4}  união\nprint(a & b)   # {2, 3}        interseção\nprint(a - b)   # {1}           diferença\n\nprint(2 in a)  # True - busca instantânea, O(1)"
+  },
+  {
+    "id": "lambda",
+    "titulo": "Funções lambda",
+    "perguntas": [
+      "o que é lambda",
+      "como criar função anônima",
+      "para que serve map e filter"
+    ],
+    "resposta": "`lambda` cria uma função pequena e sem nome, útil quando você precisa passar uma função como argumento. Para lógica mais longa, prefira um `def` normal — fica mais legível.",
+    "codigo": "dobro = lambda x: x * 2\nprint(dobro(5))    # 10\n\n# uso típico: como critério de ordenação\nalunos = [(\"Ana\", 8), (\"Bia\", 6)]\nalunos.sort(key=lambda item: item[1])\n\n# map e filter\nnumeros = [1, 2, 3, 4]\ndobrados = list(map(lambda x: x * 2, numeros))     # [2, 4, 6, 8]\npares = list(filter(lambda x: x % 2 == 0, numeros)) # [2, 4]\n\n# em Python, list comprehension costuma ser mais legível:\ndobrados = [x * 2 for x in numeros]"
+  },
+  {
+    "id": "input",
+    "titulo": "Entrada de dados com input",
+    "perguntas": [
+      "como pedir dados ao usuário",
+      "como usar o input",
+      "como ler o que o usuário digitou"
+    ],
+    "resposta": "`input()` mostra uma mensagem e espera o usuário digitar. O retorno é SEMPRE texto — converta com `int()` ou `float()` quando precisar calcular.",
+    "codigo": "nome = input(\"Qual seu nome? \")\nprint(f\"Olá, {nome}!\")\n\n# convertendo para número\nidade = int(input(\"Sua idade: \"))\nprint(f\"Ano que vem você terá {idade + 1}\")\n\n# com validação\nwhile True:\n    entrada = input(\"Digite um número: \")\n    if entrada.isdigit():\n        numero = int(entrada)\n        break\n    print(\"Valor inválido, tente de novo.\")"
+  },
+  {
+    "id": "debug",
+    "titulo": "Encontrar erros no código",
+    "perguntas": [
+      "como debugar meu código",
+      "como encontrar erro no programa",
+      "meu código não funciona o que faço",
+      "como ler uma mensagem de erro"
+    ],
+    "resposta": "Leia a mensagem de erro de baixo para cima: a última linha diz o TIPO do erro e a penúltima aponta o arquivo e a linha. A técnica mais simples e eficaz continua sendo colocar `print()` para inspecionar valores.",
+    "codigo": "# 1. Leia o traceback de baixo para cima\n#    File \"main.py\", line 12   <- onde\n#    TypeError: ...             <- o quê\n\n# 2. Inspecione com print\nvalor = calcular()\nprint(f\"DEBUG valor={valor} tipo={type(valor)}\")\n\n# 3. Isole o problema: teste a menor parte possível\n\n# 4. Verifique o básico:\n#    - o nome está escrito igual?\n#    - o tipo é o esperado?\n#    - a indentação está correta?\n#    - faltou dois-pontos no if/for/def?"
+  },
+  {
+    "id": "operadores",
+    "titulo": "Operadores matemáticos",
+    "perguntas": [
+      "quais os operadores matemáticos do python",
+      "o que faz o sinal de porcentagem",
+      "como fazer divisão inteira",
+      "como calcular potência"
+    ],
+    "resposta": "Além dos quatro básicos, o Python tem divisão inteira `//`, resto `%` e potência `**`. O operador `%` é muito usado para testar se um número é par ou múltiplo de outro.",
+    "codigo": "print(7 + 3)    # 10   soma\nprint(7 - 3)    # 4    subtração\nprint(7 * 3)    # 21   multiplicação\nprint(7 / 3)    # 2.333...  divisão (sempre float)\nprint(7 // 3)   # 2    divisão inteira\nprint(7 % 3)    # 1    resto da divisão\nprint(7 ** 2)   # 49   potência\n\n# usos comuns do resto\nif numero % 2 == 0:\n    print(\"par\")\n\nx = 5\nx += 3          # x = x + 3  -> 8"
+  },
+  {
+    "id": "ambiente-virtual",
+    "titulo": "Ambiente virtual e pip",
+    "perguntas": [
+      "o que é ambiente virtual",
+      "como usar o venv",
+      "como instalar dependências do projeto",
+      "para que serve o requirements.txt"
+    ],
+    "resposta": "O ambiente virtual isola as bibliotecas de cada projeto, evitando que a versão exigida por um quebre o outro. O `requirements.txt` lista essas dependências para que qualquer pessoa reproduza o ambiente.",
+    "codigo": "# criar o ambiente\n# python -m venv .venv\n\n# ativar (Windows)\n# .venv\\Scripts\\activate\n\n# ativar (Linux/Mac)\n# source .venv/bin/activate\n\n# instalar dependências\n# pip install -r requirements.txt\n\n# salvar as dependências atuais\n# pip freeze > requirements.txt\n\n# sair do ambiente\n# deactivate"
+  },
+  {
+    "id": "copiar-lista",
+    "titulo": "Copiar listas (armadilha comum)",
+    "perguntas": [
+      "por que alterar uma lista altera a outra",
+      "como copiar uma lista",
+      "o que é referência em python"
+    ],
+    "resposta": "Atribuir uma lista a outra variável NÃO cria uma cópia: as duas passam a apontar para a mesma lista na memória. Para copiar de verdade, use `.copy()`, fatiamento ou `deepcopy` para listas aninhadas.",
+    "codigo": "a = [1, 2, 3]\nb = a            # NÃO é cópia - mesmo objeto\nb.append(4)\nprint(a)         # [1, 2, 3, 4]  <- a mudou também!\n\n# cópias de verdade\nc = a.copy()     # ou list(a), ou a[:]\nc.append(5)\nprint(a)         # [1, 2, 3, 4]  <- intacta\n\n# listas dentro de listas exigem cópia profunda\nfrom copy import deepcopy\nmatriz = [[1, 2], [3, 4]]\nnova = deepcopy(matriz)"
+  },
+  {
+    "id": "html-estrutura",
+    "titulo": "HTML: estrutura de uma página",
+    "perguntas": [
+      "como é a estrutura básica de um html",
+      "o que é doctype",
+      "estrutura de uma página html",
+      "head e body html"
+    ],
+    "resposta": "Todo documento HTML tem a mesma espinha dorsal: `<!DOCTYPE html>`, `<html>`, `<head>` e `<body>`.\n\nO `<head>` guarda informação SOBRE a página — título, codificação, folhas de estilo, metadados. Nada dele aparece na tela.\n\nO `<body>` guarda o conteúdo visível.\n\nDois `<meta>` são obrigatórios na prática: `charset=\"UTF-8\"` (sem ele, acentos quebram) e `viewport` (sem ele, a página não se adapta ao celular).",
+    "codigo": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\"\n        content=\"width=device-width, initial-scale=1.0\">\n  <title>Título da aba</title>\n  <meta name=\"description\" content=\"Resumo para o Google\">\n  <link rel=\"stylesheet\" href=\"estilo.css\">\n</head>\n<body>\n  <h1>Título principal</h1>\n  <p>Conteúdo visível da página.</p>\n\n  <!-- script no fim: o HTML já carregou quando ele roda -->\n  <script src=\"script.js\"></script>\n</body>\n</html>"
+  },
+  {
+    "id": "html-semantica",
+    "titulo": "HTML: tags semânticas",
+    "perguntas": [
+      "o que são tags semânticas",
+      "quando usar section article ou div",
+      "html semântico",
+      "header main footer nav"
+    ],
+    "resposta": "Tag semântica é aquela cujo nome DIZ o que o conteúdo é — `<header>`, `<nav>`, `<article>` — em vez de `<div>`, que não diz nada.\n\nPor que importa: leitores de tela navegam por essas marcas, buscadores as usam para entender a página, e o código fica legível para quem vier depois.\n\nA regra prática: use `<div>` só quando nenhuma tag semântica descrever o conteúdo. Se você precisa de um contêiner apenas para estilizar, aí sim `<div>` é a escolha certa.",
+    "codigo": "<body>\n  <header>\n    <h1>Meu site</h1>\n    <nav>\n      <ul>\n        <li><a href=\"/\">Início</a></li>\n        <li><a href=\"/sobre\">Sobre</a></li>\n      </ul>\n    </nav>\n  </header>\n\n  <main>                       <!-- só um por página -->\n    <article>                  <!-- conteúdo independente -->\n      <h2>Título do post</h2>\n      <p>Texto...</p>\n    </article>\n\n    <aside>                    <!-- conteúdo relacionado -->\n      <h3>Veja também</h3>\n    </aside>\n  </main>\n\n  <footer>\n    <p>&copy; 2026</p>\n  </footer>\n</body>\n\n<!-- article: faz sentido sozinho (um post)\n     section: agrupa por tema, precisa de título\n     div:     sem significado, só para estilo -->"
+  },
+  {
+    "id": "html-formularios",
+    "titulo": "HTML: formulários",
+    "perguntas": [
+      "como fazer um formulário em html",
+      "input types html",
+      "label e input html",
+      "validação de formulário html"
+    ],
+    "resposta": "Duas regras que a maioria dos formulários erra:\n\n1. Todo `<input>` precisa de um `<label>` ligado a ele pelo `for`/`id`. Sem isso, leitores de tela não sabem o que o campo pede — e clicar no rótulo deixa de focar o campo.\n\n2. O atributo `name` é obrigatório para o dado ser enviado. Sem `name`, o campo simplesmente não vai junto.\n\nO HTML valida sozinho com `required`, `type`, `min`, `pattern` — mas validação no navegador é conveniência, não segurança. O servidor precisa validar de novo, sempre.",
+    "codigo": "<form action=\"/cadastrar\" method=\"post\">\n  <label for=\"email\">E-mail</label>\n  <input type=\"email\" id=\"email\" name=\"email\" required>\n\n  <label for=\"senha\">Senha</label>\n  <input type=\"password\" id=\"senha\" name=\"senha\"\n         minlength=\"8\" required>\n\n  <label for=\"idade\">Idade</label>\n  <input type=\"number\" id=\"idade\" name=\"idade\" min=\"18\" max=\"120\">\n\n  <label for=\"estado\">Estado</label>\n  <select id=\"estado\" name=\"estado\">\n    <option value=\"sp\">São Paulo</option>\n    <option value=\"rj\">Rio de Janeiro</option>\n  </select>\n\n  <label>\n    <input type=\"checkbox\" name=\"aceito\" required>\n    Aceito os termos\n  </label>\n\n  <button type=\"submit\">Cadastrar</button>\n</form>\n\n<!-- types úteis: text, email, password, number, date,\n     tel, url, search, file, color, range -->"
+  },
+  {
+    "id": "html-acessibilidade",
+    "titulo": "HTML: acessibilidade",
+    "perguntas": [
+      "como deixar um site acessível",
+      "o que é acessibilidade web",
+      "atributo alt imagem",
+      "aria label html"
+    ],
+    "resposta": "Acessibilidade é fazer a página funcionar para quem usa leitor de tela, navega só pelo teclado ou enxerga pouco. No Brasil é também exigência legal para sites públicos.\n\nO que rende mais resultado com menos esforço:\n\n1. `alt` em toda imagem — descritivo se a imagem informa, vazio (`alt=\"\"`) se é decorativa\n2. HTML semântico — leitores de tela navegam por `<nav>`, `<main>`, títulos\n3. Contraste suficiente entre texto e fundo\n4. Tudo alcançável pelo teclado (Tab)\n5. `<label>` em todo campo de formulário\n\nUse ARIA só quando não houver tag nativa. Um `<button>` de verdade já faz tudo que um `<div role=\"button\">` tentaria imitar.",
+    "codigo": "<!-- imagem que informa -->\n<img src=\"grafico.png\"\n     alt=\"Vendas cresceram 30% de janeiro a junho\">\n\n<!-- imagem decorativa: alt vazio, não alt ausente -->\n<img src=\"enfeite.svg\" alt=\"\">\n\n<!-- botão só com ícone precisa de nome acessível -->\n<button aria-label=\"Fechar\">&times;</button>\n\n<!-- link deve descrever o destino -->\n<a href=\"/relatorio.pdf\">Baixar relatório (PDF, 2 MB)</a>\n<!-- ruim: <a href=\"...\">clique aqui</a> -->\n\n<!-- idioma ajuda o leitor de tela a pronunciar -->\n<html lang=\"pt-BR\">\n\n<!-- prefira o nativo ao ARIA -->\n<button>Enviar</button>\n<!-- em vez de <div role=\"button\" tabindex=\"0\"> -->"
+  },
+  {
+    "id": "landing-page",
+    "titulo": "O que é uma landing page",
+    "perguntas": [
+      "o que é uma landing page",
+      "o que é landing page",
+      "para que serve uma landing page",
+      "o que é uma lp",
+      "landing page serve pra que"
+    ],
+    "resposta": "Landing page é uma página única, focada em UMA ação só - deixar o e-mail, comprar, agendar uma demonstração. Diferente de um site normal (várias páginas, menu de navegação, vários objetivos), ela evita distrações: sem menu, sem links para outro lugar, só o caminho até o botão de ação (a \"call to action\").\n\nEstrutura típica: título chamativo, um benefício claro logo abaixo, uma imagem ou vídeo, uma lista curta de benefícios, e o formulário/botão de ação repetido mais de uma vez na página.\n\nNa Tartaruga: diga \"quero uma landing page\" para eu conduzir um briefing e gerar o HTML/CSS/JS dela.",
+    "codigo": "<!-- esqueleto mínimo de uma landing page -->\n<header>\n  <h1>Título chamativo</h1>\n  <p>Uma frase dizendo o benefício principal</p>\n  <a href=\"#form\" class=\"botao\">Quero começar</a>   <!-- call to action -->\n</header>\n\n<section id=\"beneficios\">\n  <h2>Por que escolher isto</h2>\n  <!-- 2-3 benefícios, curtos -->\n</section>\n\n<section id=\"form\">\n  <h2>Fale com a gente</h2>\n  <form>\n    <input type=\"email\" placeholder=\"Seu e-mail\" required>\n    <button type=\"submit\">Quero começar</button>\n  </form>\n</section>\n\n<!-- sem <nav> com links para fora - uma landing page tem UM objetivo só -->"
+  },
+  {
+    "id": "css-seletores",
+    "titulo": "CSS: seletores e especificidade",
+    "perguntas": [
+      "como funcionam os seletores css",
+      "o que é especificidade css",
+      "por que meu css não está aplicando",
+      "prioridade de estilos css"
+    ],
+    "resposta": "Quando duas regras disputam o mesmo elemento, vence a de maior ESPECIFICIDADE — não a que aparece depois.\n\nA contagem funciona como um placar (inline, id, classe, tag):\n\n  estilo inline      1,0,0,0\n  #id                0,1,0,0\n  .classe, [attr], :hover  0,0,1,0\n  tag, ::before      0,0,0,1\n\nUm `#id` vence qualquer quantidade de classes. Por isso `!important` costuma ser sintoma de especificidade descontrolada, não solução — e quando duas regras `!important` brigam, o problema só piora.",
+    "codigo": "/* seletores básicos */\np { }                    /* tag */\n.destaque { }            /* classe */\n#cabecalho { }           /* id */\n\n/* combinadores */\ndiv p { }                /* p em qualquer nível dentro de div */\ndiv > p { }              /* p filho DIRETO de div */\nh2 + p { }               /* p logo depois de h2 */\nh2 ~ p { }               /* todos os p irmãos depois de h2 */\n\n/* pseudo-classes e pseudo-elementos */\na:hover { }\nli:nth-child(2n) { }     /* pares */\ninput:focus { }\np::first-line { }\n\n/* especificidade em disputa */\n#menu .item     { color: red; }    /* 0,1,1,0 - vence */\n.menu .item.ativo { color: blue; } /* 0,0,3,0 */\n\n/* :where() tem especificidade ZERO - útil para bases */\n:where(.reset) p { margin: 0; }"
+  },
+  {
+    "id": "css-box-model",
+    "titulo": "CSS: box model",
+    "perguntas": [
+      "o que é box model css",
+      "diferença entre margin e padding",
+      "box-sizing border-box",
+      "por que meu elemento fica maior que o definido"
+    ],
+    "resposta": "Todo elemento é uma caixa com quatro camadas, de dentro para fora: conteúdo, `padding`, `border` e `margin`.\n\nO problema clássico: por padrão, `width: 300px` define só o CONTEÚDO. Somando padding e borda, a caixa fica maior que 300px — e o layout quebra.\n\nA solução é `box-sizing: border-box`, que faz `width` incluir padding e borda. Hoje é praticamente padrão aplicar isso em tudo, logo na primeira linha do CSS.",
+    "codigo": "/* aplique sempre - resolve o problema de uma vez */\n*, *::before, *::after {\n  box-sizing: border-box;\n}\n\n/* sem border-box (content-box, o padrão) */\n.caixa {\n  width: 300px;\n  padding: 20px;\n  border: 5px solid;\n  /* largura REAL = 300 + 40 + 10 = 350px */\n}\n\n/* com border-box */\n.caixa {\n  box-sizing: border-box;\n  width: 300px;\n  /* largura REAL = 300px, padding e borda cabem dentro */\n}\n\n/* margens verticais COLAPSAM entre irmãos:\n   50px embaixo + 30px em cima = 50px, não 80px */\n\n/* atalhos */\nmargin: 10px;                 /* todos os lados */\nmargin: 10px 20px;            /* vertical | horizontal */\nmargin: 10px 20px 30px 40px;  /* cima direita baixo esquerda */\nmargin: 0 auto;               /* centraliza horizontalmente */"
+  },
+  {
+    "id": "css-flexbox",
+    "titulo": "CSS: Flexbox",
+    "perguntas": [
+      "como usar flexbox",
+      "o que é display flex",
+      "como centralizar div com flex",
+      "justify-content align-items"
+    ],
+    "resposta": "Flexbox organiza elementos em UMA dimensão — uma linha ou uma coluna. É a ferramenta certa para barras de navegação, alinhar itens e distribuir espaço.\n\nO ponto que mais confunde: `justify-content` age no eixo PRINCIPAL e `align-items` no eixo CRUZADO. Com `flex-direction: row` (padrão), o principal é horizontal. Ao trocar para `column`, os dois invertem de sentido.\n\nCentralizar qualquer coisa vira trivial: `display:flex` mais `justify-content:center` mais `align-items:center`.",
+    "codigo": "/* no contêiner */\n.container {\n  display: flex;\n  flex-direction: row;          /* row | column */\n  justify-content: space-between;  /* eixo principal */\n  align-items: center;             /* eixo cruzado */\n  gap: 16px;                       /* espaço entre itens */\n  flex-wrap: wrap;                 /* quebra linha se faltar espaço */\n}\n\n/* valores de justify-content */\n/* flex-start | center | flex-end |\n   space-between | space-around | space-evenly */\n\n/* nos filhos */\n.item {\n  flex: 1;              /* cresce e divide o espaço igualmente */\n  flex: 0 0 200px;      /* não cresce, não encolhe, 200px fixos */\n  align-self: flex-end; /* sobrescreve o align-items do pai */\n  order: 2;             /* muda a ordem visual */\n}\n\n/* centralização perfeita */\n.centro {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  min-height: 100vh;\n}"
+  },
+  {
+    "id": "css-grid",
+    "titulo": "CSS: Grid",
+    "perguntas": [
+      "como usar css grid",
+      "grid template columns",
+      "diferença entre grid e flexbox",
+      "layout em grade css"
+    ],
+    "resposta": "Grid organiza em DUAS dimensões — linhas e colunas ao mesmo tempo. Flexbox faz uma dimensão.\n\nA escolha na prática: use Grid para o layout da página (cabeçalho, barra lateral, conteúdo, rodapé) e Flexbox para alinhar coisas dentro de um componente. Os dois se combinam muito bem.\n\nA unidade `fr` representa uma fração do espaço livre, e é o que torna o Grid tão direto.",
+    "codigo": "/* três colunas iguais */\n.grade {\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr;\n  gap: 20px;\n}\n\n/* colunas responsivas SEM media query */\n.cards {\n  display: grid;\n  grid-template-columns:\n    repeat(auto-fit, minmax(250px, 1fr));\n  gap: 16px;\n}\n/* cria quantas colunas couberem, com no mínimo 250px */\n\n/* layout de página por áreas nomeadas */\n.pagina {\n  display: grid;\n  grid-template-areas:\n    \"cabecalho cabecalho\"\n    \"lateral   conteudo\"\n    \"rodape    rodape\";\n  grid-template-columns: 200px 1fr;\n  min-height: 100vh;\n}\n.cabecalho { grid-area: cabecalho; }\n.lateral   { grid-area: lateral; }\n.conteudo  { grid-area: conteudo; }\n.rodape    { grid-area: rodape; }\n\n/* item ocupando várias células */\n.destaque {\n  grid-column: span 2;\n  grid-row: 1 / 3;\n}"
+  },
+  {
+    "id": "css-responsivo",
+    "titulo": "CSS: design responsivo",
+    "perguntas": [
+      "como fazer site responsivo",
+      "o que é media query",
+      "mobile first css",
+      "adaptar site para celular"
+    ],
+    "resposta": "Responsivo é o layout que se adapta ao tamanho da tela. Duas coisas são obrigatórias:\n\n1. A meta tag viewport no HTML — sem ela, o celular finge ter 980px de largura e o layout responsivo não funciona\n2. Media queries no CSS\n\nA abordagem recomendada é MOBILE FIRST: escreva o estilo do celular como base e use `min-width` para acrescentar o que telas maiores precisam. O CSS fica menor, porque telas pequenas exigem menos regras.",
+    "codigo": "/* no HTML, obrigatório: */\n/* <meta name=\"viewport\"\n         content=\"width=device-width, initial-scale=1.0\"> */\n\n/* MOBILE FIRST: base é o celular */\n.container {\n  padding: 16px;\n  display: grid;\n  grid-template-columns: 1fr;\n}\n\n/* tablet para cima */\n@media (min-width: 768px) {\n  .container {\n    grid-template-columns: 1fr 1fr;\n    padding: 24px;\n  }\n}\n\n/* desktop para cima */\n@media (min-width: 1024px) {\n  .container {\n    grid-template-columns: repeat(3, 1fr);\n    max-width: 1200px;\n    margin: 0 auto;\n  }\n}\n\n/* respeitar quem prefere menos animação */\n@media (prefers-reduced-motion: reduce) {\n  * { animation: none !important; transition: none !important; }\n}\n\n/* tema escuro do sistema */\n@media (prefers-color-scheme: dark) {\n  body { background: #16191d; color: #e6edf3; }\n}\n\n/* unidades relativas ajudam mais que media queries:\n   rem (raiz), % , vw/vh (tela), clamp() */\n.titulo {\n  font-size: clamp(1.5rem, 4vw, 3rem);\n}"
+  },
+  {
+    "id": "css-variaveis",
+    "titulo": "CSS: variáveis (custom properties)",
+    "perguntas": [
+      "o que são variáveis css",
+      "como usar var no css",
+      "custom properties css",
+      "como fazer tema escuro com css"
+    ],
+    "resposta": "Variáveis CSS guardam valores reutilizáveis. Diferente das variáveis de pré-processadores como Sass, elas existem em tempo de execução — dá para trocá-las com JavaScript ou dentro de uma media query, e a página inteira reage.\n\nÉ por isso que tema claro/escuro ficou simples: basta redefinir as cores num seletor e tudo que as usa muda junto.\n\nElas são herdadas, então declarar em `:root` torna disponível em todo o documento.",
+    "codigo": "/* declarar */\n:root {\n  --cor-primaria: #4ade80;\n  --cor-fundo: #ffffff;\n  --cor-texto: #16191d;\n  --espaco: 16px;\n  --raio: 8px;\n}\n\n/* usar */\n.botao {\n  background: var(--cor-primaria);\n  color: var(--cor-texto);\n  padding: var(--espaco);\n  border-radius: var(--raio);\n}\n\n/* valor de reserva se a variável não existir */\n.caixa {\n  margin: var(--espaco-grande, 32px);\n}\n\n/* TEMA ESCURO: redefine e tudo muda junto */\n@media (prefers-color-scheme: dark) {\n  :root {\n    --cor-fundo: #16191d;\n    --cor-texto: #e6edf3;\n  }\n}\n\n/* trocar pelo JavaScript */\n/* document.documentElement.style\n     .setProperty('--cor-primaria', '#f87171'); */"
+  },
+  {
+    "id": "js-var-let-const",
+    "titulo": "JavaScript: var, let e const",
+    "perguntas": [
+      "qual a diferença entre var let e const",
+      "quando usar let ou const em javascript",
+      "o que é hoisting em javascript",
+      "escopo de variáveis em javascript"
+    ],
+    "resposta": "Regra prática: use `const` por padrão, `let` quando o valor precisa mudar, e `var` nunca.\n\nvar — escopo de FUNÇÃO, sofre hoisting (é içada para o topo já declarada, valendo undefined) e pode ser redeclarada. Foi a origem de uma classe inteira de bugs.\n\nlet — escopo de BLOCO ({}), não pode ser redeclarada no mesmo escopo.\n\nconst — escopo de bloco e não pode ser REATRIBUÍDA. Atenção: isso não torna o valor imutável — o conteúdo de um objeto ou array continua alterável.",
+    "codigo": "// escopo de bloco\nif (true) {\n  var a = 1;   // vaza do bloco\n  let b = 2;   // fica no bloco\n}\nconsole.log(a);  // 1\n// console.log(b);  // ReferenceError\n\n// const impede REATRIBUIR, não MODIFICAR\nconst lista = [1, 2];\nlista.push(3);        // funciona: [1, 2, 3]\n// lista = [4];       // TypeError\n\n// hoisting\nconsole.log(x);  // undefined (não dá erro!)\nvar x = 5;\n\n// console.log(y);  // ReferenceError - let não tem esse comportamento\nlet y = 5;"
+  },
+  {
+    "id": "js-funcoes-arrow",
+    "titulo": "JavaScript: funções e arrow functions",
+    "perguntas": [
+      "como criar uma função em javascript",
+      "o que é arrow function",
+      "qual a diferença entre function e arrow function",
+      "função anônima em javascript"
+    ],
+    "resposta": "Há três formas de declarar função em JavaScript, e a diferença entre elas não é só estética.\n\nA arrow function (`=>`) é mais curta e, principalmente, NÃO tem `this` próprio — ela herda o `this` do escopo onde foi escrita. Isso resolve o problema clássico de perder o contexto dentro de callbacks.\n\nDeclarações com `function` sofrem hoisting completo: podem ser chamadas antes da linha onde aparecem.",
+    "codigo": "// declaração (com hoisting)\nfunction somar(a, b) {\n  return a + b;\n}\n\n// expressão\nconst subtrair = function (a, b) {\n  return a - b;\n};\n\n// arrow function\nconst multiplicar = (a, b) => a * b;   // return implícito\nconst dobrar = n => n * 2;             // 1 parâmetro dispensa parênteses\nconst criar = () => ({ ok: true });    // objeto exige parênteses\n\n// parâmetro padrão e rest\nfunction saudar(nome, saudacao = \"Olá\") {\n  return `${saudacao}, ${nome}!`;\n}\nfunction somarTodos(...numeros) {\n  return numeros.reduce((t, n) => t + n, 0);\n}"
+  },
+  {
+    "id": "js-this",
+    "titulo": "JavaScript: o valor de this",
+    "perguntas": [
+      "o que é this em javascript",
+      "por que this fica undefined",
+      "como funciona o this dentro de uma função",
+      "bind call apply javascript"
+    ],
+    "resposta": "Em JavaScript, `this` depende de COMO a função foi chamada, não de onde foi escrita — o oposto da maioria das linguagens, e a origem de muita confusão.\n\nA regra: numa chamada `objeto.metodo()`, `this` é o objeto. Numa chamada solta `metodo()`, `this` é undefined (em modo estrito) ou o global.\n\nArrow functions são a exceção útil: elas não têm `this` próprio e herdam o do escopo onde foram escritas. Por isso resolvem o problema de callbacks.",
+    "codigo": "const contador = {\n  valor: 0,\n\n  incrementarErrado() {\n    setTimeout(function () {\n      this.valor++;        // this NÃO é contador aqui\n    }, 100);\n  },\n\n  incrementarCerto() {\n    setTimeout(() => {\n      this.valor++;        // arrow herda o this do método\n    }, 100);\n  }\n};\n\n// perdendo o contexto\nconst solto = contador.incrementarCerto;\n// solto();   // this vira undefined\n\n// amarrando explicitamente\nconst preso = contador.incrementarCerto.bind(contador);\npreso();      // funciona"
+  },
+  {
+    "id": "js-closures",
+    "titulo": "JavaScript: closures",
+    "perguntas": [
+      "o que é closure em javascript",
+      "como funciona closure",
+      "função que lembra variáveis javascript"
+    ],
+    "resposta": "Closure é uma função que continua enxergando as variáveis do escopo onde foi criada, mesmo depois que esse escopo terminou.\n\nÉ o mecanismo por trás de dados privados em JavaScript: a variável não existe fora da função externa, mas as funções internas continuam tendo acesso a ela.\n\nToda função em JavaScript cria uma closure — a maioria das pessoas usa sem saber o nome.",
+    "codigo": "function criarContador() {\n  let contagem = 0;            // privada: ninguém alcança de fora\n\n  return {\n    incrementar() { contagem++; return contagem; },\n    valor() { return contagem; }\n  };\n}\n\nconst c = criarContador();\nc.incrementar();   // 1\nc.incrementar();   // 2\nconsole.log(c.valor());   // 2\n// console.log(contagem);  // ReferenceError - realmente privada\n\n// armadilha clássica com var\nfor (var i = 0; i < 3; i++) {\n  setTimeout(() => console.log(i), 10);   // 3, 3, 3\n}\nfor (let j = 0; j < 3; j++) {\n  setTimeout(() => console.log(j), 10);   // 0, 1, 2\n}"
+  },
+  {
+    "id": "js-promises",
+    "titulo": "JavaScript: Promises",
+    "perguntas": [
+      "o que é uma promise em javascript",
+      "como funciona promise",
+      "then catch javascript",
+      "código assíncrono em javascript"
+    ],
+    "resposta": "Promise representa um valor que ainda não existe — o resultado de algo que vai terminar depois (uma requisição, a leitura de um arquivo).\n\nEla tem três estados: pendente, resolvida (fulfilled) ou rejeitada. Uma vez decidida, nunca muda.\n\nO ganho sobre callbacks é o encadeamento: `.then()` devolve outra Promise, o que evita o aninhamento profundo que ficou conhecido como callback hell.",
+    "codigo": "const buscar = (id) =>\n  new Promise((resolver, rejeitar) => {\n    setTimeout(() => {\n      if (id > 0) resolver({ id, nome: \"Ana\" });\n      else rejeitar(new Error(\"id inválido\"));\n    }, 100);\n  });\n\nbuscar(1)\n  .then(usuario => console.log(usuario.nome))\n  .catch(erro => console.error(erro.message))\n  .finally(() => console.log(\"terminou\"));\n\n// várias em paralelo\nPromise.all([buscar(1), buscar(2)])\n  .then(([a, b]) => console.log(a, b));\n\n// não falha se uma rejeitar\nPromise.allSettled([buscar(1), buscar(-1)])\n  .then(r => console.log(r));"
+  },
+  {
+    "id": "js-async-await",
+    "titulo": "JavaScript: async e await",
+    "perguntas": [
+      "o que é async await",
+      "como usar async await em javascript",
+      "como esperar uma promise",
+      "tratar erro em async await"
+    ],
+    "resposta": "`async/await` é açúcar sintático sobre Promises: o código assíncrono passa a ser lido de cima para baixo, como se fosse síncrono.\n\nToda função `async` devolve uma Promise. O `await` pausa a execução DAQUELA função até a Promise decidir — sem travar o resto do programa.\n\nErros são tratados com `try/catch` normal, o que é bem mais legível que encadear `.catch()`.",
+    "codigo": "async function carregarUsuario(id) {\n  try {\n    const resposta = await fetch(`/api/usuarios/${id}`);\n\n    if (!resposta.ok) {\n      throw new Error(`HTTP ${resposta.status}`);\n    }\n\n    const usuario = await resposta.json();\n    return usuario;\n\n  } catch (erro) {\n    console.error(\"Falhou:\", erro.message);\n    return null;\n  }\n}\n\n// ERRADO: espera uma depois da outra (lento)\nconst a = await buscar(1);\nconst b = await buscar(2);\n\n// CERTO: dispara as duas e espera juntas\nconst [x, y] = await Promise.all([buscar(1), buscar(2)]);"
+  },
+  {
+    "id": "js-event-loop",
+    "titulo": "JavaScript: event loop",
+    "perguntas": [
+      "o que é event loop",
+      "como javascript executa código assíncrono",
+      "javascript é single thread",
+      "call stack e task queue"
+    ],
+    "resposta": "JavaScript executa numa única thread — só uma coisa de cada vez. O event loop é o que permite que isso não trave a página.\n\nO funcionamento: o código roda na pilha de chamadas. Operações demoradas (timer, rede) são entregues ao ambiente (navegador ou Node), que avisa quando terminam. O callback vai para uma fila, e o event loop só o coloca na pilha quando ela estiver VAZIA.\n\nConsequência prática: `setTimeout(fn, 0)` não executa imediatamente — executa depois que todo o código atual terminar.",
+    "codigo": "console.log(\"1\");\n\nsetTimeout(() => console.log(\"2\"), 0);\n\nPromise.resolve().then(() => console.log(\"3\"));\n\nconsole.log(\"4\");\n\n// Saída: 1, 4, 3, 2\n//\n// 1 e 4  -> código síncrono, roda primeiro\n// 3      -> microtask (Promise) tem prioridade\n// 2      -> macrotask (setTimeout) vem por último\n\n// Um laço pesado TRAVA a página inteira,\n// porque nada mais roda enquanto ele ocupa a pilha:\n// while (true) {}"
+  },
+  {
+    "id": "js-array-metodos",
+    "titulo": "JavaScript: map, filter e reduce",
+    "perguntas": [
+      "como usar map filter reduce",
+      "métodos de array em javascript",
+      "percorrer array em javascript",
+      "diferença entre map e forEach"
+    ],
+    "resposta": "São os três métodos que substituem a maior parte dos laços `for` em JavaScript moderno.\n\nmap — transforma cada item, devolve array do MESMO tamanho\nfilter — seleciona itens, devolve array MENOR ou igual\nreduce — combina tudo num único valor\n\nA diferença entre `map` e `forEach`: map devolve um array novo, forEach devolve undefined. Se você não vai usar o resultado, use forEach.",
+    "codigo": "const produtos = [\n  { nome: \"Teclado\", preco: 150 },\n  { nome: \"Mouse\", preco: 80 },\n  { nome: \"Monitor\", preco: 900 }\n];\n\n// map: transformar\nconst nomes = produtos.map(p => p.nome);\n// [\"Teclado\", \"Mouse\", \"Monitor\"]\n\n// filter: selecionar\nconst baratos = produtos.filter(p => p.preco < 200);\n\n// reduce: acumular\nconst total = produtos.reduce((soma, p) => soma + p.preco, 0);\n// 1130\n\n// encadeando\nconst totalBaratos = produtos\n  .filter(p => p.preco < 200)\n  .reduce((s, p) => s + p.preco, 0);   // 230\n\n// outros úteis\nprodutos.find(p => p.preco > 500);     // primeiro que bate\nprodutos.some(p => p.preco > 500);     // algum? true\nprodutos.every(p => p.preco > 50);     // todos? true"
+  },
+  {
+    "id": "js-igualdade",
+    "titulo": "JavaScript: == e ===",
+    "perguntas": [
+      "qual a diferença entre == e === em javascript",
+      "igualdade estrita javascript",
+      "por que usar três iguais",
+      "coerção de tipos javascript"
+    ],
+    "resposta": "`==` compara valores DEPOIS de converter os tipos. `===` compara valor E tipo, sem conversão.\n\nUse sempre `===`. A conversão automática do `==` produz resultados que ninguém consegue prever de cabeça, e isso já causou bugs reais em produção.\n\nA única exceção defensável é `x == null`, que captura null e undefined de uma vez.",
+    "codigo": "0 == \"0\"        // true   (converte)\n0 === \"0\"       // false  (tipos diferentes)\n\n0 == false      // true\n0 === false     // false\n\nnull == undefined    // true\nnull === undefined   // false\n\n\"\" == 0         // true\n[] == false     // true    <- absurdo, mas é a regra\n\nNaN === NaN     // false!  use Number.isNaN()\n\n// exceção aceita\nif (valor == null) {\n  // pega null E undefined\n}\n\n// comparar objetos compara REFERÊNCIA\n{a:1} === {a:1}   // false - objetos diferentes"
+  },
+  {
+    "id": "js-desestruturacao",
+    "titulo": "JavaScript: desestruturação e spread",
+    "perguntas": [
+      "o que é desestruturação em javascript",
+      "como usar spread operator",
+      "três pontos em javascript",
+      "destructuring javascript"
+    ],
+    "resposta": "Desestruturação extrai valores de objetos e arrays direto para variáveis. O operador spread (`...`) espalha ou reúne elementos.\n\nOs dois juntos deixam o código bem mais curto — e são onipresentes em código moderno, especialmente em React.",
+    "codigo": "// objetos\nconst usuario = { nome: \"Ana\", idade: 25, cidade: \"SP\" };\nconst { nome, idade } = usuario;\nconst { cidade: local } = usuario;          // renomeando\nconst { pais = \"Brasil\" } = usuario;        // valor padrão\n\n// arrays\nconst [primeiro, segundo] = [10, 20, 30];\nconst [a, , c] = [1, 2, 3];                 // pulando\n\n// em parâmetros\nfunction exibir({ nome, idade }) {\n  console.log(`${nome}, ${idade}`);\n}\n\n// spread: copiar e combinar\nconst copia = { ...usuario };\nconst atualizado = { ...usuario, idade: 26 };\nconst juntos = [...[1, 2], ...[3, 4]];       // [1,2,3,4]\n\n// rest: reunir o resto\nconst { nome: n, ...resto } = usuario;"
+  },
+  {
+    "id": "js-dom",
+    "titulo": "JavaScript: manipulando o DOM",
+    "perguntas": [
+      "como manipular o dom com javascript",
+      "querySelector javascript",
+      "como alterar elemento html com javascript",
+      "criar elemento javascript"
+    ],
+    "resposta": "O DOM é a representação da página como árvore de objetos. Manipulá-lo é como o JavaScript altera o que aparece na tela.\n\n`querySelector` aceita qualquer seletor CSS e é o método que substituiu os antigos `getElementById` e `getElementsByClassName`.\n\nCuidado com `innerHTML`: ele interpreta HTML, então inserir texto vindo do usuário por ali abre brecha de segurança (XSS). Para texto, use `textContent`.",
+    "codigo": "// selecionar\nconst botao = document.querySelector(\"#enviar\");\nconst itens = document.querySelectorAll(\".item\");\n\n// alterar\nbotao.textContent = \"Enviar agora\";   // seguro para texto\nbotao.classList.add(\"ativo\");\nbotao.classList.toggle(\"escondido\");\nbotao.setAttribute(\"disabled\", \"\");\nbotao.style.color = \"red\";\n\n// criar e inserir\nconst novo = document.createElement(\"li\");\nnovo.textContent = \"Novo item\";\ndocument.querySelector(\"ul\").appendChild(novo);\n\n// remover\nnovo.remove();\n\n// PERIGO: innerHTML com dado do usuário permite XSS\n// elemento.innerHTML = entradaDoUsuario;   // nunca faça isso\nelemento.textContent = entradaDoUsuario;    // seguro"
+  },
+  {
+    "id": "js-eventos",
+    "titulo": "JavaScript: eventos",
+    "perguntas": [
+      "como funcionam eventos em javascript",
+      "addEventListener javascript",
+      "onclick javascript",
+      "o que é delegação de eventos",
+      "o que é event bubbling",
+      "como escutar um evento em javascript"
+    ],
+    "resposta": "`addEventListener` liga uma função a um acontecimento. É preferível ao atributo `onclick` no HTML porque separa comportamento de estrutura e permite vários ouvintes no mesmo elemento.\n\nEventos sobem pela árvore (bubbling): um clique num botão dentro de uma div dispara o ouvinte da div também. Isso permite a DELEGAÇÃO — um único ouvinte no pai atende a todos os filhos, inclusive os criados depois.",
+    "codigo": "const botao = document.querySelector(\"#enviar\");\n\nbotao.addEventListener(\"click\", (evento) => {\n  evento.preventDefault();      // cancela o comportamento padrão\n  console.log(\"clicou em\", evento.target);\n});\n\n// DELEGAÇÃO: um ouvinte para a lista inteira\ndocument.querySelector(\"#lista\").addEventListener(\"click\", (e) => {\n  if (e.target.matches(\".remover\")) {\n    e.target.closest(\"li\").remove();\n  }\n});\n// Funciona até para <li> criados DEPOIS deste código rodar.\n\n// eventos comuns\n// click, submit, input, change, keydown, focus, blur\n// DOMContentLoaded - quando o HTML terminou de carregar\n\n// remover ouvinte exige a MESMA referência de função\nfunction aoClicar() {}\nbotao.addEventListener(\"click\", aoClicar);\nbotao.removeEventListener(\"click\", aoClicar);"
+  },
+  {
+    "id": "js-classes",
+    "titulo": "JavaScript: classes e protótipos",
+    "perguntas": [
+      "como criar classe em javascript",
+      "orientação a objetos em javascript",
+      "o que é prototype em javascript",
+      "herança em javascript"
+    ],
+    "resposta": "JavaScript não tem classes de verdade — tem PROTÓTIPOS. A sintaxe `class`, introduzida no ES6, é açúcar sintático sobre esse mecanismo.\n\nCada objeto tem um protótipo, e a busca por uma propriedade sobe essa cadeia até encontrá-la ou chegar a null. É herança por delegação, não por cópia.\n\nSaber disso importa quando algo inesperado acontece: o `class` esconde o mecanismo, mas não o substitui.",
+    "codigo": "class Animal {\n  #segredo = \"privado\";        // campo privado de verdade (ES2022)\n\n  constructor(nome) {\n    this.nome = nome;\n  }\n\n  falar() {\n    return `${this.nome} faz um som`;\n  }\n\n  static criar(nome) {          // método da classe, não da instância\n    return new Animal(nome);\n  }\n\n  get descricao() {             // getter\n    return `Animal: ${this.nome}`;\n  }\n}\n\nclass Cachorro extends Animal {\n  falar() {\n    return `${super.falar()} — au au!`;\n  }\n}\n\nconst rex = new Cachorro(\"Rex\");\nconsole.log(rex.falar());\nconsole.log(rex instanceof Animal);   // true\n\n// por baixo, é protótipo:\nObject.getPrototypeOf(rex) === Cachorro.prototype;   // true"
+  },
+  {
+    "id": "linguagens-suportadas",
+    "titulo": "Linguagens que eu conheço",
+    "perguntas": [
+      "quais linguagens você conhece",
+      "que linguagens você suporta",
+      "você só sabe python",
+      "linguagem que eu falo é tipo python java javascript",
+      "você conhece java ou javascript",
+      "em que linguagens você programa"
+    ],
+    "resposta": "Duas coisas diferentes: o que eu EXPLICO e o que eu EXECUTO.\n\nEXPLICO — Python, JavaScript, HTML e CSS. Tenho tópicos curados nas quatro, de básico a avançado: closures, event loop, flexbox, grid, acessibilidade, especificidade.\n\nEXECUTO — só Python. É o único interpretador que tenho embutido. Mostro exemplos de JavaScript, mas não posso rodá-los.\n\nCONCEITOS GERAIS — lógica, algoritmos, complexidade e orientação a objetos valem para qualquer linguagem, e sobre isso converso sem depender de sintaxe.\n\nFora dessas quatro, prefiro admitir que não sei. Mas posso APRENDER: peça \"aprenda sobre X\" que eu pesquiso, avalio as fontes e guardo o que encontrar — citando de onde veio.",
+    "codigo": "# O mesmo algoritmo em três linguagens.\n# Eu executo só o primeiro - mas a LÓGICA é a mesma nos três,\n# e é sobre ela que eu consigo conversar.\n\n# Python (eu rodo)\nfor i in range(3):\n    print(i)\n\n# JavaScript (eu não rodo)\n#   for (let i = 0; i < 3; i++) {\n#       console.log(i);\n#   }\n\n# Java (eu não rodo)\n#   for (int i = 0; i < 3; i++) {\n#       System.out.println(i);\n#   }\n\n# Mude de linguagem e a sintaxe muda.\n# A ideia de \"repetir três vezes\" não."
+  },
+  {
+    "id": "logica-programacao",
+    "titulo": "Lógica de programação",
+    "perguntas": [
+      "como funciona a lógica da programação",
+      "o que é lógica de programação",
+      "lógica de programação",
+      "como pensar como programador",
+      "como desenvolver raciocínio lógico para programar"
+    ],
+    "resposta": "Lógica de programação é a habilidade de quebrar um problema em passos pequenos, ordenados e sem ambiguidade — antes de escrever qualquer código. A linguagem é só o idioma; a lógica é o que você realmente está dizendo.\n\nTodo programa, por mais complexo, é construído com três estruturas básicas:\n\n1. SEQUÊNCIA — um passo depois do outro\n2. DECISÃO — escolher um caminho conforme uma condição (if/else)\n3. REPETIÇÃO — repetir enquanto for necessário (for/while)\n\nQuem domina isso troca de linguagem com facilidade. Quem decora sintaxe sem entender lógica trava no primeiro problema diferente.",
+    "codigo": "# As três estruturas resolvendo um problema real:\n# \"calcular a média de uma turma e dizer quem passou\"\n\nnotas = [8.0, 4.5, 7.0, 6.0]\n\n# SEQUÊNCIA: passos em ordem\ntotal = sum(notas)\nmedia = total / len(notas)\nprint(f\"Média da turma: {media:.1f}\")\n\n# REPETIÇÃO: mesmo tratamento para cada aluno\nfor posicao, nota in enumerate(notas, start=1):\n\n    # DECISÃO: caminhos diferentes conforme a condição\n    if nota >= 7:\n        situacao = \"aprovado\"\n    elif nota >= 5:\n        situacao = \"recuperação\"\n    else:\n        situacao = \"reprovado\"\n\n    print(f\"Aluno {posicao}: {nota} - {situacao}\")"
+  },
+  {
+    "id": "algoritmo",
+    "titulo": "Algoritmo",
+    "perguntas": [
+      "o que é um algoritmo",
+      "algoritmo",
+      "qual a diferença entre algoritmo e programa",
+      "como escrever um algoritmo"
+    ],
+    "resposta": "Algoritmo é uma sequência finita de passos que resolve um problema. Não depende de linguagem: uma receita de bolo e um manual de montagem são algoritmos.\n\nA diferença para um programa: o algoritmo é a IDEIA da solução; o programa é essa ideia escrita numa linguagem que o computador executa. O mesmo algoritmo pode virar programa em Python, Java ou C.\n\nTodo algoritmo precisa ser finito (termina), definido (sem passos ambíguos) e eficaz (realmente resolve o problema).",
+    "codigo": "# Algoritmo: encontrar o maior número de uma lista\n#\n# Em passos, antes de qualquer código:\n#   1. guarde o primeiro número como \"maior até agora\"\n#   2. para cada número seguinte:\n#        se for maior que o guardado, substitua\n#   3. ao fim da lista, o guardado é a resposta\n\ndef encontrar_maior(numeros):\n    maior = numeros[0]           # passo 1\n    for numero in numeros[1:]:   # passo 2\n        if numero > maior:\n            maior = numero\n    return maior                 # passo 3\n\nprint(encontrar_maior([3, 9, 2, 7]))   # 9\n\n# O Python já traz isso pronto como max(),\n# mas saber CONSTRUIR é o que ensina a lógica."
+  },
+  {
+    "id": "o-que-e-programar",
+    "titulo": "O que é programar",
+    "perguntas": [
+      "o que é programar",
+      "o que é programação",
+      "o que faz um programador",
+      "para que serve programação"
+    ],
+    "resposta": "Programar é dar instruções precisas a um computador para que ele resolva um problema. O computador é extremamente rápido e absolutamente literal: faz exatamente o que você mandou, não o que você quis dizer.\n\nPor isso a maior parte do trabalho não é digitar código — é entender bem o problema, decidir como resolvê-lo e prever o que pode dar errado. Digitar é a parte fácil.\n\nProgramar é, na prática, traduzir intenção humana (ambígua, cheia de contexto) em instruções sem nenhuma ambiguidade.",
+    "codigo": "# O computador é literal. Veja a diferença:\n\n# O que você QUIS dizer: \"a média das notas\"\nnotas = [8, 7, 9]\nmedia = sum(notas) / len(notas)      # 8.0 - correto\n\n# O que aconteceria com uma lista vazia:\nnotas = []\n# media = sum(notas) / len(notas)    # ZeroDivisionError!\n\n# Programar bem é prever esse caso:\nmedia = sum(notas) / len(notas) if notas else 0\n\n# O computador não \"sabe\" que uma turma vazia\n# deveria dar média zero. Você precisa dizer."
+  },
+  {
+    "id": "paradigmas",
+    "titulo": "Paradigmas de programação",
+    "perguntas": [
+      "o que são paradigmas de programação",
+      "paradigma de programação",
+      "qual a diferença entre programação estruturada e orientada a objetos",
+      "o que é programação funcional"
+    ],
+    "resposta": "Paradigma é o estilo de organizar o código — a forma de pensar a solução. Os três mais comuns:\n\nESTRUTURADA: o programa é uma sequência de funções que manipulam dados. Simples e direta, boa para scripts e problemas pequenos.\n\nORIENTADA A OBJETOS: dados e comportamentos ficam juntos em objetos. Boa para sistemas grandes, onde organizar importa mais que economizar linhas.\n\nFUNCIONAL: o programa é composto de funções que não alteram estado. Reduz efeitos colaterais e facilita testar.\n\nPython aceita os três, e projetos reais costumam misturar — use o que deixa o problema mais claro.",
+    "codigo": "# O MESMO problema nos três paradigmas\n\n# --- ESTRUTURADA: dados e funções separados\ndef area_retangulo(largura, altura):\n    return largura * altura\n\nprint(area_retangulo(3, 4))          # 12\n\n# --- ORIENTADA A OBJETOS: dados e comportamento juntos\nclass Retangulo:\n    def __init__(self, largura, altura):\n        self.largura = largura\n        self.altura = altura\n\n    def area(self):\n        return self.largura * self.altura\n\nprint(Retangulo(3, 4).area())        # 12\n\n# --- FUNCIONAL: transformações sem alterar estado\nretangulos = [(3, 4), (2, 5)]\nareas = [l * a for l, a in retangulos]\nprint(areas)                          # [12, 10]"
+  },
+  {
+    "id": "python-linguagem",
+    "titulo": "A linguagem Python",
+    "perguntas": [
+      "o que é python",
+      "por que usar python",
+      "python é bom para quê",
+      "quais as vantagens do python"
+    ],
+    "resposta": "Python é uma linguagem interpretada, de tipagem dinâmica, criada para priorizar a legibilidade. A ideia central é que código é lido muito mais vezes do que escrito.\n\nPontos fortes: sintaxe próxima do inglês, enorme quantidade de bibliotecas prontas, e ótima para começar — você resolve problemas reais sem lutar contra a linguagem.\n\nPontos fracos: é mais lenta que linguagens compiladas como C, e a tipagem dinâmica deixa passar erros que só aparecem na execução.\n\nMuito usada em ciência de dados, inteligência artificial, automação e desenvolvimento web.",
+    "codigo": "# A mesma tarefa em Java e em Python:\n\n# Java:\n#   public class Main {\n#       public static void main(String[] args) {\n#           System.out.println(\"Olá!\");\n#       }\n#   }\n\n# Python:\nprint(\"Olá!\")\n\n# Menos cerimônia, mesma tarefa.\n\n# Tipagem dinâmica: o tipo vem do valor\nx = 5          # int\nx = \"agora sou texto\"   # e pode mudar\n\n# Conveniente, mas exige atenção:\n# erros de tipo só aparecem ao executar."
+  },
+  {
+    "id": "pseudocodigo",
+    "titulo": "Pseudocódigo e fluxograma",
+    "perguntas": [
+      "o que é pseudocódigo",
+      "o que é um fluxograma",
+      "como planejar um algoritmo antes de programar",
+      "pseudocódigo"
+    ],
+    "resposta": "São duas formas de planejar a solução ANTES de escrever código, livres da sintaxe de qualquer linguagem.\n\nPSEUDOCÓDIGO: os passos escritos em português estruturado. Rápido de escrever e fácil de corrigir — mudar uma linha de texto custa menos que reescrever código.\n\nFLUXOGRAMA: a mesma lógica em forma de desenho, com símbolos padronizados (losango para decisão, retângulo para ação). Ajuda a enxergar caminhos que você esqueceu de tratar.\n\nVale principalmente quando o problema é confuso: se você não consegue escrever os passos em português, também não vai conseguir em Python.",
+    "codigo": "# PSEUDOCÓDIGO\n#\n#   INÍCIO\n#     LEIA a idade\n#     SE idade >= 18 ENTÃO\n#       ESCREVA \"maior de idade\"\n#     SENÃO\n#       ESCREVA \"menor de idade\"\n#     FIM SE\n#   FIM\n\n# O MESMO, traduzido para Python:\n\nidade = int(input(\"Sua idade: \"))\n\nif idade >= 18:\n    print(\"maior de idade\")\nelse:\n    print(\"menor de idade\")\n\n# A tradução é quase mecânica - porque o\n# trabalho difícil já foi feito no planejamento."
+  },
+  {
+    "id": "estruturas-de-dados",
+    "titulo": "Estruturas de dados",
+    "perguntas": [
+      "o que são estruturas de dados",
+      "estrutura de dados",
+      "quando usar lista dicionário ou conjunto",
+      "qual estrutura de dados escolher"
+    ],
+    "resposta": "Estrutura de dados é a forma de organizar informação na memória. Escolher bem muda drasticamente a clareza e a velocidade do programa.\n\nGuia prático para as quatro do Python:\n\nLISTA — itens em ordem, podem repetir, você acessa por posição\nTUPLA — como a lista, mas não pode ser alterada\nDICIONÁRIO — pares chave→valor, busca instantânea por nome\nCONJUNTO (set) — sem ordem e sem repetição, ótimo para verificar pertencimento\n\nA regra que mais importa na prática: procurar um item numa lista percorre item por item; num dicionário ou conjunto é praticamente instantâneo.",
+    "codigo": "# Procurar em lista: percorre item a item - O(n)\nalunos_lista = [\"Ana\", \"Bia\", \"Caio\"]\nprint(\"Bia\" in alunos_lista)      # funciona, mas é lento com muitos dados\n\n# Procurar em conjunto: praticamente instantâneo - O(1)\nalunos_set = {\"Ana\", \"Bia\", \"Caio\"}\nprint(\"Bia\" in alunos_set)\n\n# Dicionário: quando cada item tem informação associada\nnotas = {\"Ana\": 8.5, \"Bia\": 7.0}\nprint(notas[\"Ana\"])               # 8.5\n\n# Com 10 itens a diferença não aparece.\n# Com 100.000, a lista leva segundos e o set, nada."
+  },
+  {
+    "id": "compilado-interpretado",
+    "titulo": "Compilado x Interpretado",
+    "perguntas": [
+      "qual a diferença entre linguagem compilada e interpretada",
+      "o que é uma linguagem interpretada",
+      "o que é compilar",
+      "por que python é mais lento que c"
+    ],
+    "resposta": "COMPILADA (C, Java, Go): o código-fonte é traduzido inteiro para linguagem de máquina antes de rodar. A tradução acontece uma vez, então a execução é rápida — mas é preciso compilar a cada alteração, e o resultado é específico de um sistema.\n\nINTERPRETADA (Python, JavaScript): um programa interpretador lê e executa linha por linha, na hora. Você roda imediatamente após editar e o mesmo código funciona em qualquer sistema com o interpretador — em troca de velocidade.\n\nÉ por isso que Python é mais lento que C: a tradução acontece durante a execução, todas as vezes. Para a maioria dos programas, a diferença não importa; para cálculo pesado, importa muito.",
+    "codigo": "# Interpretado: editou, rodou.\n#   python programa.py\n\n# Compilado: editou, compilou, rodou.\n#   gcc programa.c -o programa\n#   ./programa\n\n# O erro abaixo só aparece QUANDO a linha executa:\n\ndef dividir(a, b):\n    return a / b\n\nprint(\"esta linha roda normalmente\")\n# print(dividir(1, 0))   # o erro só surge aqui\n\n# Numa linguagem compilada, boa parte dos erros\n# de tipo seria pega antes mesmo do programa rodar."
+  },
+  {
+    "id": "boas-praticas",
+    "titulo": "Boas práticas de código",
+    "perguntas": [
+      "quais são as boas práticas de programação",
+      "como escrever um código limpo",
+      "como deixar meu código melhor",
+      "o que é código limpo"
+    ],
+    "resposta": "Código é lido muito mais vezes do que escrito — inclusive por você mesmo, daqui a três meses, sem lembrar de nada. Escrever para quem vai ler é a regra que resume todas as outras.\n\nO que mais rende resultado:\n\n1. NOMES QUE EXPLICAM — `media_final` em vez de `mf` ou `x`\n2. FUNÇÕES PEQUENAS — cada uma faz uma coisa só\n3. NÃO SE REPITA — código repetido vira função\n4. COMENTE O PORQUÊ, não o quê — o código já diz o que faz\n5. TRATE OS ERROS — pense no que acontece quando dá errado\n\nCódigo \"inteligente\" que ninguém entende é pior que código óbvio.",
+    "codigo": "# RUIM: nomes sem significado, tudo junto, repetição\ndef calc(l):\n    t = 0\n    for i in l:\n        t = t + i\n    return t / len(l)\n\n# BOM: nome claro, caso de erro tratado\ndef calcular_media(notas):\n    \"\"\"Devolve a média das notas, ou 0 se a lista estiver vazia.\"\"\"\n    if not notas:\n        return 0\n    return sum(notas) / len(notas)\n\n# Comentário que AJUDA explica a razão:\n#   arredondamos para 2 casas porque o boletim\n#   da faculdade só aceita esse formato\nmedia = round(calcular_media([8, 7, 9]), 2)"
+  },
+  {
+    "id": "aprender-programar",
+    "titulo": "Como aprender a programar",
+    "perguntas": [
+      "como aprender a programar",
+      "por onde começar a programar",
+      "como estudar programação",
+      "dicas para quem está começando a programar"
+    ],
+    "resposta": "O erro mais comum é assistir a muita aula e escrever pouco código. Programação se aprende programando — como andar de bicicleta, ninguém aprende assistindo.\n\nO que funciona:\n\n1. ESCREVA CÓDIGO TODO DIA, nem que seja pouco. Constância vence intensidade.\n2. DIGITE, NÃO COPIE. Copiar e colar não fixa nada.\n3. QUEBRE DE PROPÓSITO. Mude uma linha, veja o erro, entenda a mensagem.\n4. FAÇA PROJETOS SEUS. Algo que você realmente queira usar.\n5. NÃO PULE A LÓGICA. Sem ela, você decora sintaxe e trava no primeiro problema novo.\n\nErro faz parte. Todo programador experiente passa boa parte do dia lendo mensagens de erro — a diferença é que ele já não se assusta com elas.",
+    "codigo": "# Uma forma prática de estudar: pegue um problema\n# simples e resolva de mais de um jeito.\n\nnumeros = [1, 2, 3, 4, 5]\n\n# Jeito 1: laço explícito\ntotal = 0\nfor n in numeros:\n    total += n\n\n# Jeito 2: função pronta\ntotal = sum(numeros)\n\n# Jeito 3: só os pares\ntotal = sum(n for n in numeros if n % 2 == 0)\n\n# Comparar soluções ensina mais que resolver\n# dez problemas diferentes sempre do mesmo jeito."
+  },
+  {
+    "id": "js-debounce-throttle",
+    "titulo": "JavaScript: debounce e throttle",
+    "perguntas": [
+      "o que e debounce em javascript",
+      "o que e throttle em javascript",
+      "diferenca entre debounce e throttle",
+      "como limitar quantas vezes uma funcao roda em javascript"
+    ],
+    "resposta": "Debounce e throttle resolvem o mesmo problema — uma função disparando rápido demais (digitação, scroll, resize) — de jeitos diferentes.\n\nDEBOUNCE espera o disparo PARAR por um tempo antes de executar. Cada novo disparo reinicia a espera. É ideal para busca-enquanto-digita: só busca quando a pessoa parou de digitar.\n\nTHROTTLE executa no máximo uma vez a cada intervalo, não importa quantas vezes o evento dispare. É ideal para scroll ou resize: você quer reagir regularmente, não só no final.",
+    "codigo": "function debounce(fn, espera = 300) {\n  let temporizador;\n  return (...args) => {\n    clearTimeout(temporizador);\n    temporizador = setTimeout(() => fn(...args), espera);\n  };\n}\n\nfunction throttle(fn, intervalo = 300) {\n  let bloqueado = false;\n  return (...args) => {\n    if (bloqueado) return;\n    fn(...args);\n    bloqueado = true;\n    setTimeout(() => { bloqueado = false; }, intervalo);\n  };\n}"
+  },
+  {
+    "id": "js-currying",
+    "titulo": "JavaScript: currying",
+    "perguntas": [
+      "o que e currying em javascript",
+      "como funciona currying",
+      "transformar funcao com varios argumentos em varias chamadas"
+    ],
+    "resposta": "Currying transforma uma função de vários argumentos, f(a, b, c), numa sequência de funções de um argumento cada: f(a)(b)(c).\n\nA vantagem é poder \"congelar\" argumentos aos poucos e reaproveitar a função parcial depois — útil para configurar uma função genérica em algo mais específico sem reescrevê-la.",
+    "codigo": "function curry(fn) {\n  return function curried(...args) {\n    if (args.length >= fn.length) return fn(...args);\n    return (...proximos) => curried(...args, ...proximos);\n  };\n}\n\nconst somarTres = curry((a, b, c) => a + b + c);\nsomarTres(1)(2)(3);   // 6\nsomarTres(1, 2)(3);   // 6 - também funciona parcial"
+  },
+  {
+    "id": "js-memoization",
+    "titulo": "JavaScript: memoization",
+    "perguntas": [
+      "o que e memoization em javascript",
+      "como funciona cache de funcao em javascript",
+      "como evitar recalcular o mesmo resultado em javascript"
+    ],
+    "resposta": "Memoization guarda o resultado de uma função associado aos argumentos que a geraram — se a função for chamada de novo com os MESMOS argumentos, o resultado guardado é devolvido na hora, sem recalcular.\n\nÉ uma troca de memória por velocidade: vale a pena quando a função é cara (recursão, cálculo pesado) e é chamada várias vezes com entradas repetidas — o exemplo clássico é Fibonacci recursivo, que sem cache recalcula o mesmo valor um número exponencial de vezes.",
+    "codigo": "function memoize(fn) {\n  const cache = new Map();\n  return (...args) => {\n    const chave = JSON.stringify(args);\n    if (cache.has(chave)) return cache.get(chave);\n    const resultado = fn(...args);\n    cache.set(chave, resultado);\n    return resultado;\n  };\n}\n\nconst fibRapido = memoize(function fib(n) {\n  return n <= 1 ? n : fib(n - 1) + fib(n - 2);\n});"
+  },
+  {
+    "id": "js-observer-pubsub",
+    "titulo": "JavaScript: padrão Observer e Pub/Sub",
+    "perguntas": [
+      "o que e o padrao observer em javascript",
+      "o que e pub sub em javascript",
+      "como criar um emissor de eventos em javascript",
+      "event emitter javascript"
+    ],
+    "resposta": "Observer (ou Pub/Sub — publish/subscribe) desacopla quem GERA um evento de quem REAGE a ele. Um objeto central (o emissor) mantém uma lista de \"ouvintes\" por tipo de evento; qualquer parte do código pode se inscrever (on) sem o emissor precisar conhecer quem está ouvindo.\n\nÉ a mesma ideia por trás de addEventListener no navegador — só que implementada à mão, para eventos que não são do DOM (um pedido criado, um usuário logado, um estado que mudou).",
+    "codigo": "class EmissorEventos {\n  constructor() { this.ouvintes = new Map(); }\n\n  on(evento, callback) {\n    if (!this.ouvintes.has(evento)) this.ouvintes.set(evento, []);\n    this.ouvintes.get(evento).push(callback);\n  }\n\n  emit(evento, ...dados) {\n    (this.ouvintes.get(evento) || []).forEach((cb) => cb(...dados));\n  }\n}\n\nconst bus = new EmissorEventos();\nbus.on('pedido:criado', (p) => console.log('novo pedido', p));\nbus.emit('pedido:criado', { id: 1 });"
+  },
+  {
+    "id": "js-singleton",
+    "titulo": "JavaScript: padrão Singleton",
+    "perguntas": [
+      "o que e singleton",
+      "o que e o padrao singleton em javascript",
+      "como garantir uma unica instancia em javascript",
+      "singleton com closure javascript"
+    ],
+    "resposta": "Singleton garante que só existe UMA instância de algo compartilhada por toda a aplicação — configuração global, conexão única, cache central.\n\nEm JavaScript, a forma mais simples não usa nem `class`: uma closure guarda a instância na primeira chamada e devolve a mesma nas seguintes. Um módulo ES (arquivo importado) já se comporta como singleton por natureza, porque o runtime só executa o módulo uma vez e reaproveita o resultado em todo `import` seguinte — por isso o padrão explícito é mais raro hoje do que já foi.",
+    "codigo": "const ConfiguracaoApp = (function () {\n  let instancia;\n  function criarInstancia() {\n    return { tema: 'claro', idioma: 'pt-BR' };\n  }\n  return {\n    obter() {\n      if (!instancia) instancia = criarInstancia();\n      return instancia;\n    },\n  };\n})();\n\nConfiguracaoApp.obter() === ConfiguracaoApp.obter();   // true"
+  },
+  {
+    "id": "js-proxy",
+    "titulo": "JavaScript: Proxy",
+    "perguntas": [
+      "o que e proxy em javascript",
+      "como interceptar leitura e escrita de um objeto em javascript",
+      "como validar propriedades de um objeto automaticamente em javascript"
+    ],
+    "resposta": "Proxy envolve um objeto e permite interceptar operações básicas sobre ele — ler uma propriedade (get), escrever (set), checar existência (has), deletar (deleteProperty) — através de \"traps\" (armadilhas): funções que rodam no lugar do comportamento padrão.\n\nO uso mais comum é validação automática: em vez de validar manualmente toda vez que alguém atribui um valor, o Proxy valida DENTRO do próprio objeto, de forma transparente para quem o usa.",
+    "codigo": "function criarObjetoValidado(alvo, regras) {\n  return new Proxy(alvo, {\n    set(objeto, propriedade, valor) {\n      const valido = regras[propriedade];\n      if (valido && !valido(valor)) {\n        throw new TypeError(`Valor inválido para \"${String(propriedade)}\"`);\n      }\n      objeto[propriedade] = valor;\n      return true;\n    },\n  });\n}\n\nconst usuario = criarObjetoValidado({ idade: 0 }, {\n  idade: (v) => typeof v === 'number' && v >= 0,\n});\nusuario.idade = 25;   // ok\nusuario.idade = -1;   // TypeError"
+  },
+  {
+    "id": "js-generators",
+    "titulo": "JavaScript: generators e iteradores",
+    "perguntas": [
+      "o que e generator em javascript",
+      "como funciona function* em javascript",
+      "o que e yield em javascript",
+      "iteradores em javascript"
+    ],
+    "resposta": "Uma function generator (`function*`) não roda até o fim de uma vez — ela PAUSA em cada `yield` e só continua quando alguém pede o próximo valor (`.next()`, ou um `for...of`). Isso permite produzir sequências sob demanda, inclusive infinitas, sem guardar tudo em memória de uma vez.\n\nTodo generator já é um iterador — é por isso que funciona direto num `for...of` ou no operador spread (`[...gerador()]`), sem código extra.",
+    "codigo": "function* gerarIntervalo(inicio, fim, passo = 1) {\n  for (let atual = inicio; atual <= fim; atual += passo) {\n    yield atual;\n  }\n}\n\nfor (const numero of gerarIntervalo(1, 10, 2)) {\n  console.log(numero);   // 1, 3, 5, 7, 9\n}\n\n// generator infinito - só produz quando pedido\nfunction* contador() {\n  let n = 0;\n  while (true) yield n++;\n}"
+  },
+  {
+    "id": "js-campos-privados",
+    "titulo": "JavaScript: campos privados de classe",
+    "perguntas": [
+      "como criar propriedade privada em classe javascript",
+      "o que significa # em classe javascript",
+      "encapsulamento em classes javascript"
+    ],
+    "resposta": "Campos que começam com `#` são privados de verdade: só o código DENTRO da própria classe consegue ler ou escrever neles — de fora, `objeto.#campo` é um erro de sintaxe, não apenas uma convenção como o antigo `_campo` (que continuava acessível, só sinalizava \"não mexa\").\n\nCombinado com um `get` público, dá para expor uma LEITURA controlada de um estado que só pode ser MODIFICADO pelos métodos da própria classe.",
+    "codigo": "class Animal {\n  #energia = 100;\n\n  constructor(nome) { this.nome = nome; }\n\n  get energia() { return this.#energia; }\n\n  mover(gasto = 10) {\n    this.#energia = Math.max(0, this.#energia - gasto);\n  }\n}\n\nconst gato = new Animal('Gato');\ngato.energia;      // 100 (leitura ok, via getter)\ngato.#energia;     // SyntaxError fora da classe"
+  },
+  {
+    "id": "js-promise-avancado",
+    "titulo": "JavaScript: Promise.all, Promise.race e retry",
+    "perguntas": [
+      "diferenca entre promise all e promise race",
+      "como esperar varias promises em javascript",
+      "como colocar tempo limite em uma promise",
+      "como tentar uma operacao assincrona de novo se falhar"
+    ],
+    "resposta": "Além de `.then`/`.catch`, o objeto `Promise` tem combinadores para lidar com VÁRIAS promises ao mesmo tempo:\n\n`Promise.all` espera TODAS resolverem, e rejeita assim que UMA falhar — ideal para várias requisições independentes que você só quer usar juntas.\n`Promise.race` resolve (ou rejeita) assim que a PRIMEIRA terminar — é a base para implementar timeout: corre a promise real contra uma que rejeita depois de X milissegundos.\n`Promise.allSettled` espera todas terminarem, sem rejeitar no meio do caminho — devolve o resultado (sucesso ou erro) de cada uma.\n\nRetry (tentar de novo) não é nativo da linguagem, mas é uma combinação simples de `async/await` com um laço e `try/catch`.",
+    "codigo": "// tempo limite via Promise.race\nfunction comLimiteDeTempo(promessa, limiteMs = 5000) {\n  const tempoEsgotado = new Promise((_, reject) =>\n    setTimeout(() => reject(new Error('Tempo limite excedido')), limiteMs)\n  );\n  return Promise.race([promessa, tempoEsgotado]);\n}\n\n// retry com espera entre tentativas\nasync function tentarNovamente(operacao, tentativas = 3, esperaMs = 500) {\n  for (let t = 1; t <= tentativas; t++) {\n    try {\n      return await operacao();\n    } catch (erro) {\n      if (t === tentativas) throw erro;\n      await new Promise((r) => setTimeout(r, esperaMs));\n    }\n  }\n}"
+  }
+]
